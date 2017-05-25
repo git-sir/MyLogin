@@ -1,0 +1,113 @@
+@charset "utf-8";
+@import "_config";
+.ucs-collapse {
+  background-color: #f7f7f7;
+  border-radius: 3px;
+  border: 1px solid #d9d9d9;
+  margin: 10px;
+}
+.ucs-collapse > .ucs-collapse-item {
+  border-top: 1px solid #d9d9d9;
+}
+.ucs-collapse > .ucs-collapse-item:first-child {
+  border-top: 0;
+}
+.ucs-collapse > .ucs-collapse-item > .ucs-collapse-header {
+  height: 38px;
+  line-height: 38px;
+  padding-left: 32px;
+  color: #666;
+  cursor: pointer;
+  position: relative;
+}
+.ucs-collapse > .ucs-collapse-item > .ucs-collapse-header .arrow {
+  font-size: 12px;
+  font-size: 7px \9;
+  /* -webkit-transform: scale(0.58333333) rotate(270deg);
+   -ms-transform: scale(0.58333333) rotate(270deg);
+   transform: scale(0.58333333) rotate(270deg);*/
+  /* IE6-IE8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=-0.0000000000000001837, M12=1, M21=-1, M22=-0.0000000000000001837)";
+  zoom: 1;
+  font-style: normal;
+  vertical-align: baseline;
+  text-align: center;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+  color: #666;
+  display: inline-block;
+  margin-right: 8px;
+  line-height: 40px;
+  content: "\E606";
+  vertical-align: middle;
+  -webkit-transition: -webkit-transform 0.24s ease;
+  transition: -webkit-transform 0.24s ease;
+  transition: transform 0.24s ease;
+  transition: transform 0.24s ease, -webkit-transform 0.24s ease;
+  /*top: 0;
+  left: 16px;
+  top: 16px \9;
+  left: 0 \9;*/
+}
+:root .ucs-collapse > .ucs-collapse-item > .ucs-collapse-header .arrow {
+  -webkit-filter: none;
+  filter: none;
+}
+:root .ucs-collapse > .ucs-collapse-item > .ucs-collapse-header .arrow {
+  font-size: 12px;
+}
+.ucs-collapse-content {
+  overflow: hidden;
+  color: #666;
+  padding: 0 16px;
+  background-color: #fff;
+}
+.ucs-collapse-content-inactive {
+  display: none;
+}
+.ucs-collapse-anim-active {
+  -webkit-transition: height 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: height 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.ucs-collapse-content > .ucs-collapse-content-box {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.ucs-collapse > .ucs-collapse-item > .ucs-collapse-header[aria-expanded="true"] .arrow {
+  display: inline-block;
+  font-size: 12px;
+  font-size: 7px \9;
+  /*-webkit-transform: rotate(450deg);
+  -ms-transform: rotate(450deg);
+  transform: rotate(450deg);*/
+  /* IE6-IE8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0.00000000000000024493, M21=-0.00000000000000024493, M22=1)";
+  zoom: 1;
+}
+:root .ucs-collapse > .ucs-collapse-item > .ucs-collapse-header[aria-expanded="true"] .arrow {
+  -webkit-filter: none;
+  filter: none;
+}
+:root .ucs-collapse > .ucs-collapse-item > .ucs-collapse-header[aria-expanded="true"] .arrow {
+  font-size: 12px;
+}
+.ucs-collapse-borderless {
+  background-color: #fff;
+  border: 0;
+}
+.ucs-collapse-borderless > .ucs-collapse-item {
+  border: 0;
+}
+.ucs-collapse-borderless > .ucs-collapse-item > .ucs-collapse-header {
+  border-bottom: 1px solid #d9d9d9;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.ucs-collapse-borderless > .ucs-collapse-item > .ucs-collapse-header:hover {
+  background-color: #fcfcfc;
+}

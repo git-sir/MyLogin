@@ -1,0 +1,51 @@
+@charset "utf-8";
+@import "_config";
+//*需要用到input样式*/
+.ucs-select-dropdown{
+  @at-root{
+    .ucs-form-group .ucs-select-dropdown{ float: left }
+  }
+  $iconwidth: 5px; //下拉图标宽
+  display: inline-block; position: relative;
+  .ucs-icon{
+    right: 10px; top: 50%; margin-top: -5px; width: 10px; height: 10px; display: block; position: absolute; cursor: pointer;
+    &:after{
+      border-top: $iconwidth solid #999; border-left: $iconwidth solid transparent; border-right: $iconwidth solid transparent; width: 0; height: 0; display: block; content: ' '; position: absolute; top: $iconwidth /2;
+    }
+  }
+  .ucs-input.placeholder{ color: $global-placeholder }
+  .ucs-dropdown{ position: absolute; left: 0; top: 39px; width: 100%; display: none; background: #fff; overflow-x: hidden; overflow-y: auto;
+    ul{ }
+    li{
+      line-height: 30px; padding-left: 10px;
+      &:hover{ background: #f8f8f8; }
+    }
+  }
+  &.open{ z-index: 10;
+    //这里引用输入框的焦点样式
+    .ucs-select-control .ucs-input{ border-color: nth($global-input-event, 1); color: nth($global-input-event, 2); }
+    .ucs-dropdown{ display: block;
+      ul{ border: 1px solid nth($global-input-event, 1); }
+    }
+    .ucs-icon{
+      &:after{
+        border-bottom: $iconwidth solid #999; border-top: $iconwidth solid transparent; position: absolute; top: - $iconwidth/2;
+      }
+    }
+  }
+  &.ucs-select-bank{
+    .ucs-input{
+      span{ display: inline-block; vertical-align: middle; }
+    }
+    .ucs-dropdown{
+      li{ @include height(38px); overflow: hidden;
+        span{ display: inline-block; vertical-align: middle; }
+      }
+    }
+  }
+  &.ucs-select-search{
+    .ucs-search-box{ position: relative; margin: 10px 0;
+      .ucs-btn-confirm{ position: absolute; right: 0; top: 0; }
+    }
+  }
+}

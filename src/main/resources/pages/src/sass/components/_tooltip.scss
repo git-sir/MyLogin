@@ -1,0 +1,104 @@
+@charset "utf-8";
+@import "_config";
+$backgroundColor: #000;
+$borderWidth: 5px;
+.ucs-tooltip{
+  position: absolute;
+  z-index: 1070;
+  display: block;
+  text-align: left;
+  .ucs-tooltip-inner{
+    padding: 3px 8px;
+    color: #fff;
+    text-align: center;
+    background-color: $backgroundColor;
+    border-radius: 4px;
+  }
+  .ucs-tooltip-arrow{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid
+  }
+  //提示语在左则
+  &.left{
+    .ucs-tooltip-arrow{
+      top: 50%;
+      right: - $borderWidth;
+      margin-top: - $borderWidth;
+      border-width: $borderWidth 0 $borderWidth $borderWidth;
+      border-left-color: $backgroundColor;
+    }
+  }
+  //提示语在右则
+  &.right{
+    .ucs-tooltip-arrow{
+      top: 50%;
+      left: -$borderWidth;
+      margin-top: -$borderWidth;
+      border-width: $borderWidth $borderWidth $borderWidth 0;
+      border-right-color: $backgroundColor;
+    }
+  }
+  //提示语在上面中间
+  &.top{
+    .ucs-tooltip-arrow{
+      bottom: -$borderWidth;
+      left: 50%;
+      margin-left: -$borderWidth;
+      border-width: $borderWidth $borderWidth 0;
+      border-top-color: $backgroundColor;
+    }
+  }
+  //提示语在上面左则
+  &.top-left{
+    .ucs-tooltip-arrow{
+      bottom: -$borderWidth;
+      left: 20px;
+      margin-left: -$borderWidth;
+      border-width: $borderWidth $borderWidth 0;
+      border-top-color: $backgroundColor;
+    }
+  }
+  //提示语在上面右则
+  &.top-right{
+    .ucs-tooltip-arrow{
+      bottom: -$borderWidth;
+      right: 20px;
+      margin-left: -$borderWidth;
+      border-width: $borderWidth $borderWidth 0;
+      border-top-color: $backgroundColor;
+    }
+  }
+  //提示语在底下中间
+  &.bottom{
+    .ucs-tooltip-arrow{
+      top: -$borderWidth;
+      left: 50%;
+      margin-left: -$borderWidth;
+      border-width: 0 $borderWidth $borderWidth;
+      border-bottom-color: $backgroundColor;
+    }
+  }
+  //提示语在底部左则
+  &.bottom-left{
+    .ucs-tooltip-arrow{
+      top: -$borderWidth;
+      left: 20px;
+      margin-left: -$borderWidth;
+      border-width: 0 $borderWidth $borderWidth;
+      border-bottom-color: $backgroundColor;
+    }
+  }
+  //提示语在底部右则
+  &.bottom-right{
+    .ucs-tooltip-arrow{
+      top: -$borderWidth;
+      right: 20px;
+      margin-left: -$borderWidth;
+      border-width: 0 $borderWidth $borderWidth;
+      border-bottom-color: $backgroundColor;
+    }
+  }
+}

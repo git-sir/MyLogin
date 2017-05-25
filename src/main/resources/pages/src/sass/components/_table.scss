@@ -1,0 +1,20 @@
+@charset "utf-8";
+@import "_config";
+.ucs-table{ border: none; background: #fafafa;
+  th{ border-bottom: 1px solid nth($global-table, 1); @include height(50px); padding: 10px nth($global-table, 3); }
+  td{ border-bottom: 1px dashed nth($global-table, 1); height:65px; line-height: normal; padding: 10px nth($global-table, 3); text-align: center;
+  }
+  .bg{ background: nth($global-table, 2) }
+  .align-left{ text-align: left }
+  .align-right{ text-align: right }
+  @at-root{
+    .ucs-table-1{
+      i{ vertical-align: middle; display: inline-block; width: 20px; @include height(20px); background: #1DC116 }
+    }
+    .ucs-table-2{
+      //下面两个为演示样式
+      .red{ color: #f00; }
+      .w-120{ width: 120px; }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+.ucs-seamless-scroll {
+  background: #fff;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  border-top: 3px solid #f66000;
+  &.ucs-seamless-scroll-vertical {
+    width: 250px;
+    height:200px;
+    ul {
+      width:100%;
+      li {
+        width:90%;
+        padding:0 5%;
+        border-bottom: 1px dashed #999;
+      }
+    }
+  }
+  &.ucs-seamless-scroll-horizontal {
+    width: 1000px;
+    height: auto;
+    .ucs-seamless-scroll-list1, .ucs-seamless-scroll-list2 {
+      float:left;
+    }
+    ul {
+      li {
+        width: auto;
+        float: left;
+        margin: 0 10px;
+      }
+    }
+  }
+  @at-root .ucs-seamless-scroll-in {
+    height:100%;
+    overflow: hidden;
+    @at-root .ucs-seamless-scroll ul {
+      line-height: 30px;
+      li.type-image {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        img {
+          display: block;
+          margin: 0 auto;
+          width: 100%;
+        }
+      }
+      li.type-text-image {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        img {
+          display: block;
+          margin: 0 auto;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

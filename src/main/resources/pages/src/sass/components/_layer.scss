@@ -1,0 +1,38 @@
+@charset "utf-8";
+@import "_config";
+.layer-background{ background: #000; z-index: 20141127; position: fixed; left: 0; top: 0; right: 0; bottom: 0; @include opacity(30); }
+.ucs-layer{
+  position: fixed; background: #fff; border-radius: 3px; box-shadow: 1px 1px 20px rgba(0, 0, 0, .3); z-index: 20141128; overflow: hidden; display: none; max-width: 800px; min-width: 200px; animation-duration: 0.3s; animation-fill-mode: both;
+  .ucs-layer-close{ display: block; position: absolute; right: 10px; top: 10px; width: 15px; height: 15px; z-index: 10;
+    &:after{ content: '✖'; position: absolute; left: 0; top: 0; display: block; color: #fff; width: 100%; height: 15px; line-height: 15px; }
+    &:hover{
+      @include opacity(60);
+    }
+  }
+  .ucs-layer-header{ @include height(40px); cursor: pointer; overflow: hidden; font-size: 16px; padding-left: 15px; color: #fff; position: relative; background: #006fbc; }
+  .ucs-layer-content{ overflow-x: hidden; overflow-y: auto; }
+  .ucs-layer-body{ padding: 15px;
+    //纯文字时
+    &.ucs-layer-text{ text-align: center; padding: 20px 15px; line-height: 20px;
+      .ucs-layer-txt{ display: inline-block; text-align: left; }
+      //成功时
+      .ucs-layer-success{ display: inline-block; text-align: left; padding-left: 30px; position: relative; color: #1DC116; font-size: 20px; line-height: 25px;
+        .icon{ color: #1DC116; background: #1DC116;display: inline-block; width: 20px; height: 20px; }
+      }
+      //失败时
+      .ucs-layer-failure{ display: inline-block; text-align: left; padding-left: 30px; position: relative; color: #B43D3D; font-size: 20px; line-height: 25px;
+        .icon{ color: #B43D3D; background: #B43D3D; }
+      }
+      .icon{ width: 25px; height: 25px; position: absolute; left: 0; top: 0;
+        //没引入字体图标，暂用色块代替
+        background: #f60;
+      }
+    }
+
+  }
+  .ucs-layer-footer{ text-align: center; margin-bottom: 20px; cursor: move;
+    .ucs-btn{ margin: 0 5px; }
+  }
+  .ucs-autoclose{ position: absolute; left: 10px; top: 45px }
+}
+@import "_layerAnimation";

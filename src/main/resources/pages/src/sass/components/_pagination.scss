@@ -1,0 +1,103 @@
+@charset "utf-8";
+@import "_config";
+.ucs-pagination-fl {
+    float: left;
+}
+
+.ucs-pagination-fr {
+    float: right;
+}
+
+.ucs-pagination {
+    display: block;
+    color: #535353;
+    line-height: 29px;
+    text-align: center;
+    width: 660px;
+    margin: 0 auto;
+    padding: 40px 0 20px;
+    &:after{
+        @include clear();
+    }
+    .ucs-pagination-cols a {
+        float: left;
+        height: 30px;
+        padding: 0 10px;
+        vertical-align: middle;
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid #dedede;
+        border-radius: 3px;
+        &.ucs-pagination-num-current {
+            border-color: #ee640a;
+        }
+    }
+
+    .ucs-pagination-prev-disable:before,
+    .ucs-pagination-prev:before {
+        content: '上一页';
+    }
+    .ucs-pagination-next-disable:before,
+    .ucs-pagination-next:before {
+        content: '下一页';
+    }
+
+    .ucs-pagination-next,
+    .ucs-pagination-prev {
+        cursor: pointer;
+    }
+    .ucs-pagination-next,
+    .ucs-pagination-prev,
+    .ucs-pagination-next-disable:before,
+    .ucs-pagination-prev-disable:before{
+        border-radius: 3px;
+        margin: 0 9px;
+        background-color: transparent;
+        border: 1px solid #dedede;
+        float: left;
+        height: 30px;
+        padding: 0 10px;
+    }
+
+    .ucs-pagination-next-disable,
+    .ucs-pagination-prev-disable {
+        cursor: no-drop;
+    }
+
+    .ucs-pagination-num {
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 0 10px;
+        border: 1px solid #dedede;
+        color: #707070;
+    }
+    .ucs-pagination-num-current,
+    .ucs-pagination-num:hover {
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 0 10px;
+        border: 1px solid #ee640a;
+        background-color: #ee640a;
+        border-color: #ee640a;
+        color: #fff;
+    }
+    .page-go {
+        float: left;
+        border: 1px solid #dedede;
+        border-radius: 3px;
+        padding: 0 10px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    input {
+        width: 44px;
+        height: 30px;
+        border: 1px solid #dedede;
+        text-align: center;
+        margin:0 10px;
+        border-radius: 3px;
+    }
+
+
+}

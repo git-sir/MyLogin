@@ -1,0 +1,92 @@
+.ucs-treeTable {
+  width: 100%;
+  border-collapse: collapse;
+  border: solid 1px #e8e8e8;
+}
+
+.ucs-treeTableHeader {
+}
+
+.ucs-treeTableHeader td {
+  height: 24px;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  border: solid 1px #e8e8e8;
+}
+
+.ucs-treeTableRow {
+  margin: 0;
+  padding: 0;
+}
+
+.ucs-treeTableCell {
+  height: 25px;
+  line-height: 25px;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: bold;
+  margin: 0;
+  border: solid 1px #e8e8e8;
+}
+
+.ucs-treeTableImg{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.ucs-treeTableImg-empty{
+  background: url(../examples/images/empty.gif) no-repeat;
+}
+
+.ucs-treeTableImg-folder{
+  background: url(../examples/images/folder.gif) no-repeat;
+}
+
+.ucs-treeTableImg-folderopen{
+  background: url(../examples/images/folderopen.gif) no-repeat;
+}
+
+.ucs-treeTableImg-join{
+  background: url(../examples/images/join.gif) no-repeat;
+}
+
+.ucs-treeTableImg-joinbottom{
+  background: url(../examples/images/joinbottom.gif) no-repeat;
+}
+
+.ucs-treeTableImg-line{
+  background: url(../examples/images/line.gif) no-repeat;
+}
+
+.ucs-treeTableImg-minus{
+  background: url(../examples/images/minus.gif) no-repeat;
+}
+
+.ucs-treeTableImg-minusbottom{
+  background: url(../examples/images/minusbottom.gif) no-repeat;
+}
+
+.ucs-treeTableImg-nolines-minus{
+  background: url(../examples/images/nolines_minus.gif) no-repeat;
+}
+
+.ucs-treeTableImg-nolines-plus{
+  background: url(../examples/images/nolines_plus.gif) no-repeat;
+}
+
+.ucs-treeTableImg-page{
+  background: url(../examples/images/page.gif) no-repeat;
+}
+
+.ucs-treeTableImg-plus{
+  background: url(../examples/images/plus.gif) no-repeat;
+}
+
+.ucs-treeTableImg-plusbottom{
+  background: url(../examples/images/plusbottom.gif) no-repeat;
+}

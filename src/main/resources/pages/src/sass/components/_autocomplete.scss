@@ -1,0 +1,32 @@
+@charset "utf-8";
+@import "_config";
+.ucs-autocomplete{
+  width:202px;
+  .ucs-autocomplete-input-wrap {
+    height: 100%;
+    .ucs-autocomplete-input {
+      width: 200px;
+      border: 1px solid #ccc;
+      height: 100%;
+      font-size: 14px;
+      padding: 0 10px;
+    }
+  }
+  .ucs-autocomplete-items-wrap{
+    width: 220px;
+    border: 1px solid #ccc;
+    line-height: 30px;
+    li {
+      overflow: hidden;
+      a {
+      width:200px;
+      display: block;
+      padding: 0 10px;
+      &:hover {
+        background: #999;
+      }
+      }
+
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@charset "utf-8";
+@import "_config";
+$backgroundColor: #f50;
+$fontColor: #fff;
+.ucs-badge{
+  position: relative;
+  display: inline-block;
+  .ucs-badge-number{
+    background-color: $backgroundColor;
+    border-radius: 10px;
+    color: $fontColor;
+    display: inline-block;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    min-width: 8px;
+    padding: 0 6px;
+    text-align: center;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+  }
+  .ucs-badge-dot{
+    width:8px;
+    height:8px;
+    padding:0;
+  }
+}

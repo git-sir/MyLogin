@@ -1,0 +1,17 @@
+@charset "utf-8";
+@import "_config";
+$defaultColor: #ccc;
+$checkedColor: #108ee9;
+.ucs-switch{ -moz-user-select: none; background-color: $defaultColor; border: 1px solid $defaultColor; border-radius: 20px; cursor: pointer; display: inline-block; height: 22px; line-height: 20px; min-width: 44px; position: relative; transition: all 0.3s ease 0s; -webkit-transition: all 0.3s ease 0s; vertical-align: middle;
+  &:after{ background-color: #fff; border-radius: 18px; content: " "; cursor: pointer; height: 18px; left: 1px; position: absolute; top: 1px; transition: all 0.3s ease 0s, width 0.3s ease 0s; -webkit-transition: all 0.3s ease 0s, width 0.3s ease 0s; width: 18px;
+  }
+  .ucs-switch-inner{ color: #fff; display: block; font-size: 12px; text-align: right; padding: 0 5px; line-height: 22px; }
+  &.checked{ background-color: $checkedColor; border-color: $checkedColor;
+    &:after{ left: 100%; margin-left: -19px; }
+    .ucs-switch-inner{ text-align: left; }
+  }
+  &.disabled{ cursor: not-allowed; background: #f4f4f4; border-color: #f4f4f4;
+    .ucs-switch-inner{ color: #999; }
+    &:after{ background-color: #ccc; cursor: not-allowed; }
+  }
+}

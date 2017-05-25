@@ -1,0 +1,39 @@
+@charset "utf-8";
+@import "_config";
+.ucs-datepicker{
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+  left: 0;
+  margin: 2px 0 0;
+  top: 100%;
+  transition-property: opacity;
+  width: 250px;
+  z-index: 1000;
+  .ucs-datepicker-header{ @include height(30px); text-align: center; position: relative;
+    .prev-month{ position: absolute; left: 0; top: 0; width: 10px; height: 10px; background: #B43D3D }
+    .next-month{ position: absolute; right: 0; top: 0; width: 10px; height: 10px; background: #B43D3D }
+  }
+  .ucs-datepicker-inner{
+    .ucs-datepicker-week{ @include height(30px); overflow: hidden;
+      li{ float: left; width: 12%; text-align: center; margin: 1px; border: 1px solid transparent; }
+    }
+    .ucs-datepicker-data{
+      li{ float: left; width: 12%; background: #f5f5f5; cursor: pointer; display: block; border-radius: 2px; height: 25px; line-height: 25px; text-align: center; margin: 1px; border: 1px solid transparent;
+        &.gray{ color: #999; }
+        &:hover{ border-color: #00afff; }
+      }
+    }
+  }
+  .ucs-year-list{
+    li{ @include height(25px); margin: 1px; width: 50px; text-align: center; background: #f5f5f5; display: block; float: left;
+      &:hover{ border-color: #00afff; }
+    }
+  }
+  .ucs-month-list{
+    li{ @include height(25px); margin: 1px; width: 50px; text-align: center; background: #f5f5f5; display: block; float: left;
+      &:hover{ border-color: #00afff; }
+    }
+  }
+}

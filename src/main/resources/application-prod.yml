@@ -1,0 +1,6 @@
+server:
+  port: 8081
+  context-path: /mylogin
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/mainPages/

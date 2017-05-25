@@ -1,0 +1,27 @@
+@charset "utf-8";
+@import "_config";
+$color: #108ee9;
+.ucs-radio{ cursor: pointer; display: inline-block; font-size: 12px; margin-right: 8px; position: relative; vertical-align: middle; white-space: nowrap;
+  span{ display: inline-block; vertical-align: middle }
+  .ucs-radio-input{ left: 1px; top: 1px; position: absolute; opacity: 0; cursor: pointer; z-index: 1;
+    &:checked{
+      + .ucs-radio-inner{
+        border-color: $color;
+        &:after{
+          content: ' '; display: block; background-color: $color; border: 0; height: 6px; left: 4px; top: 5px; width: 6px; border-radius: 50%; position: absolute;
+        }
+      }
+    }
+    &:disabled{ cursor: not-allowed;
+      + .ucs-radio-inner{ border-color: #ccc; cursor: not-allowed; }
+      &:checked{
+        + .ucs-radio-inner{
+          &:after{
+            content: ' '; display: block; background-color: #ccc; border: 0; height: 6px; left: 4px; top: 5px; width: 6px; border-radius: 50%; position: absolute;
+          }
+        }
+      }
+    }
+  }
+  .ucs-radio-inner{ background-color: #fff; border: 1px solid #999; border-radius: 50px; display: inline-block; width: 12px; height: 12px; overflow: hidden; }
+}

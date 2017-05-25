@@ -1,0 +1,40 @@
+/* the tree node's style */
+.ucs-tree {
+  overflow-y: hidden;
+}
+
+.ucs-tree-item {
+  /* immediate child of .tree废弃-view, for styling convenience */
+  cursor: pointer;
+}
+
+/* style for the children nodes container */
+.ucs-tree-children {
+  padding-left: 16px;
+}
+
+.ucs-tree-children-collapsed {
+  height: 0px;
+}
+
+.ucs-tree-arrow {
+  cursor: pointer;
+  margin-right: 6px;
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.ucs-tree-arrow:after {
+  content: '▾';
+}
+
+/* rotate the triangle to close it */
+.ucs-tree-arrow-collapsed {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}

@@ -1,0 +1,77 @@
+@charset "utf-8";
+@import "_config";
+.ucs-tips{
+  text-align:center;
+  max-width:380px;
+  display:none;
+  border-radius: 4px;
+  line-height: 16px;
+  padding: 8px;
+  padding-right:20px;
+  border: 1px solid #ffeecc;
+  background-color: #fff7e6;
+  .ucs-tips-icon{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    //图标字体暂时用颜色块代替
+    //background-color: #f60;
+    //width: 12px;
+    //height: 12px;
+    color:#f60;
+  }
+  .ucs-tips-close{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor:pointer;
+    color:#aaa;
+  }
+  .ucs-tips-close:hover{
+    color:#666;
+  }
+  position:fixed;
+  &.leftTop{
+    left:0;
+    top:0;
+  }
+  &.middleTop{
+    left:50%;
+    top:0;
+    margin-left:-150px;
+  }
+  &.rightTop{
+    right:0;
+    top:0;
+  }
+  &.leftMiddle{
+    left:0;
+    top:50%;
+    margin-top:-20px;
+  }
+  &.middle{
+    left:50%;
+    top:50%;
+    margin-left:-150px;
+    margin-top:-20px;
+  }
+  &.rightMiddle{
+    right:0;
+    top:50%;
+    margin-top:-20px;
+  }
+  &.leftBottom{
+    left:0;
+    bottom:0;
+  }
+  &.middleBottom{
+    left:50%;
+    bottom:0;
+    margin-left:-150px;
+  }
+  &.rightBottom{
+    right:0;
+    bottom:0;
+  }
+
+}

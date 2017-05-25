@@ -1,0 +1,107 @@
+.fl {
+	float: right;
+}
+
+.fr {
+	float: right;
+}
+
+.ui-pagnation {
+	display: block;
+	margin-top: 20px;
+	color: #535353;
+	line-height: 29px;
+	text-align: center
+}
+
+.ui-pagnation a {
+	float: right;
+	min-width: 30px;
+	height: 30px;
+	padding: 0 10px;
+	vertical-align: middle;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.ui-pagnation .next,
+.ui-pagnation .prev {
+	margin: 0 9px;
+	background-color: transparent;
+	border: 1px solid #00a0e9
+}
+
+.ui-pagnation .next:before,
+.ui-pagnation .prev:before {
+	content: '<';
+	color: #00a0e9;
+	font-size: 14px
+}
+
+.ui-pagnation .next:hover,
+.ui-pagnation .prev:hover {
+	border-color: #50c8ff
+}
+
+.ui-pagnation .next:hover:before,
+.ui-pagnation .prev:hover:before {
+	color: #50c8ff
+}
+
+.ui-pagnation .disable.next,
+.ui-pagnation .prev.disable {
+	background-color: #ccc;
+	border-color: #a0a0a0;
+	cursor: no-drop;
+}
+
+.ui-pagnation .disable.next:before,
+.ui-pagnation .prev.disable:before {
+	color: #a0a0a0
+}
+
+.ui-pagnation .next:before {
+	content: '>'
+}
+
+.ui-pagnation .num {
+	margin-left: 5px;
+	padding: 0 10px;
+	border: 1px solid #e5e5e5;
+	color: #707070
+}
+
+.ui-pagnation .num.current,
+.ui-pagnation .num:hover {
+	background-color: #2db7f5;
+	border-color: #2db7f5;
+	color: #fff
+}
+
+.ui-pagnation .ellipsis {
+	width: 42px;
+	height: 30px;
+	color: #707070;
+	line-height: 30px
+}
+
+.ui-pagnation input {
+	width: 44px;
+	height: 24px;
+	border: 1px solid #eee;
+	text-align: center
+}
+
+.ui-pagnation .page-go {
+	min-width: 60px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: #a7bbcb;
+	border: 1px solid #879cac;
+	color: #fff
+}
+
+.ui-pagnation .page-go:hover {
+	background-color: #50c8ff;
+	border-color: #698397
+}

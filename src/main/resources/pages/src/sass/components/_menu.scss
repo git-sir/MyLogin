@@ -1,0 +1,23 @@
+.ucs-menu{ height: 42px;
+  &:after{ @include clear(); }
+  ul{
+    li{ float: left; display: block; position: relative;
+      a{ text-decoration: none; color: #666; width: 100px; text-align: center; display: block; line-height: 40px; border-bottom: 2px solid transparent;
+        &:hover, &.menu-active{ color: #3086d1; border-bottom-color: #3086d1; }
+      }
+    }
+  }
+  .ucs-dropdown{
+    &.down{
+      > a{ color: #3086d1; border-bottom-color: #3086d1; }
+      ul{ display: block; }
+    }
+    ul{ display: none; position: absolute; left: 0; top: 42px; width: 100%; background: #fff;
+      li{ @include height(30px); float: none;
+        a{ line-height: 30px;
+          &:hover{ border: 0; }
+        }
+      }
+    }
+  }
+}

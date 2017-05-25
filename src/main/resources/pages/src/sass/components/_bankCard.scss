@@ -1,0 +1,332 @@
+@charset "utf-8";
+.ucs-bank-card .ucs-card-list {
+  padding: 25px 0;
+}
+.ucs-bank-card .ucs-card-list .ucs-card-item {
+  float: left;
+  width: 320px;
+  height: 190px;
+  overflow: hidden;
+  background: #a0bdf7;
+  border-radius: 5px;
+  margin: 0 20px 20px;
+  position: relative;
+}
+.bank-logo {
+  margin: 15px;
+  background: url(../examples/images/bank.png) no-repeat;
+  overflow: hidden;
+
+}
+.ucs-bank-card .ucs-card-list .card-num {
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  font-size: 28px;
+  padding-left: 30px;
+  margin-top: 20px;
+}
+.ucs-bank-card .ucs-card-list .del-bank-card {
+  width: 100%;
+  padding: 10px 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.3);
+  text-align: right;
+}
+.ucs-bank-card .ucs-card-list .del-bank-card a {
+  display: inline-block;
+  font-size: 16px;
+  color: #fff;
+  margin-right: 10px;
+}
+.ucs-bank-card .ucs-card-list .add-bank-card a {
+  display: block;
+  height: 188px;
+  font-size: 16px;
+  color: #69f;
+  border: 1px dashed #ddd;
+  background: #fff;
+  text-align: center;
+}
+.ucs-bank-card .ucs-card-list .add-bank-card a:hover{
+  background: #a0bdf7;
+}
+.ucs-bank-card .ucs-card-list .add-bank-card a i {
+  height: 60px;
+  line-height: 60px;
+  display: block;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: bold;
+  color: #c1d1f0;
+  padding-top: 50px;
+}
+.ucs-alert-layer{
+  position: fixed;
+  background: #fff;
+  box-shadow: 0px 0px 5px 2px #666;
+  z-index: 101;
+  overflow: hidden;
+  display: none;
+}
+.ucs-alert-layer .ucs-layer-close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  width: 30px;
+  font-size: 18px;
+  color: #fff;
+  z-index: 50;
+}
+.ucs-alert-layer h3.ucs-layer-title {
+  height: 50px;
+  line-height: 50px;
+  overflow: hidden;
+  font-size: 16px;
+  padding-left: 22px;
+  color: #fff;
+  position: relative;
+  background: #69f;
+  border-bottom: 1px solid #e8e8e8;
+}
+.ucs-alert-layer h3.ucs-layer-title b {
+  width: 35px;
+  height: 30px;
+  display: none;
+  position: absolute;
+  left: 8px;
+  top: 10px;
+}
+.ucs-addbank-layer .ucs-card-note {
+  color: #4fa3dc;
+  font-size: 14px;
+  margin: 0 0 15px;
+  overflow: hidden;
+  background: #f0f9ff;
+  border: solid 1px #4fa3dc;
+  height: 24px;
+  line-height: 24px;
+}
+.ucs-addbank-layer .add-bank-note {
+  margin: 10px 12px 10px 12px;
+}
+.ucs-addbank-layer .ucs-card-note i {
+  margin: 0 6px 0 10px;
+  color: #95d0f8;
+}
+.ucs-addbank-layer .ucs-add-bank {
+  padding: 0 10px 0 50px;
+}
+.ucs-addbank-layer .ui-input {
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 20px;
+  padding-left: 100px;
+}
+.ucs-addbank-layer .ui-input span.name {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 90px;
+  text-align: right;
+}
+.ucs-addbank-layer .ui-input .fcred {
+  color: #f13f3f;
+}
+.ucs-addbank-layer .ui-input .zoomnum {
+  background-color: #fff;
+  font-size: 18px;
+  color: #333;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+  text-indent: 10px;
+}
+.ucs-addbank-layer .ui-input .cell-input {
+  border: 1px solid #e1e1e1;
+  height: 38px;
+  line-height: 38px;
+  padding: 0px 10px;
+  width: 260px;
+  overflow: hidden;
+  color: #999;
+  font-size: 14px;
+  font-family: "Microsoft YaHei";
+  vertical-align: middle;
+}
+.ucs-addbank-layer .ui-input .cell-input.on-focus {
+  border: 1px solid #4fa3dc;
+  color: #666;
+}
+.ucs-addbank-layer .ui-input .ui-tips {
+  position: absolute;
+  left: 390px;
+  top: 0;
+}
+.ucs-addbank-layer .ui-input .ui-tips .note {
+  color: #b5b5b6;
+  display: none;
+}
+.ucs-addbank-layer .ui-input .ui-tips .error {
+  color: #f13f3f;
+  display: none;
+}
+.ucs-addbank-layer .ui-input .ui-tips .correct {
+  color: #009a83;
+  display: none;
+}
+.ucs-addbank-layer .ui-input .ui-tips i {
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  line-height: 15px;
+  margin: 0px 5px;
+  color: #f13f3f;
+  font-style: normal;
+}
+.ucs-addbank-layer .ui-input .ui-tips .note i {
+  color: #68baee;
+}
+.ucs-addbank-layer .ui-input .ui-tips .correct i {
+  color: #48ba35;
+  margin-top: 15px;
+}
+.ucs-addbank-layer .selectdrapdown {
+  cursor: pointer;
+  float: left;
+  position: relative;
+  z-index: 10;
+  margin-right: 10px;
+}
+.ucs-addbank-layer .selectdrapdown .cell-input {
+  overflow: hidden;
+  position: relative;
+}
+.ucs-addbank-layer .selectdrapdown .cell-input i{
+  display: inline-block;
+  width: 18px;
+  height: 14px;
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
+.ucs-addbank-layer .selectdrapdown .drapdown {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  width: 100%;
+  max-height: 150px;
+  background: #fff;
+  border: 1px solid #4fa3dc;
+  border-top: 0;
+  display: none;
+  z-index: 10;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.ucs-addbank-layer .selectdrapdown .drapdown ul {
+  overflow-y: auto;
+  display: block;
+  width: 100%;
+}
+.ucs-addbank-layer .selectdrapdown ul li {
+  height: 25px;
+  background-color: #fafafa;
+  line-height: 25px;
+  overflow: hidden;
+  padding-left: 10px;
+  margin-bottom: 1px;
+}
+.ucs-addbank-layer .ucs-add-bank .ui-button-2 {
+  margin: 25px 0 0 0;
+}
+.ucs-addbank-layer .ui-input .cell-btn-orange,.ucs-addbank-layer .ui-input .cell-btn-gray {
+  width: 282px;
+  height: 40px;
+  line-height: 40px;
+  margin-right: 10px;
+  box-shadow: none;
+  width: 135px;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.ucs-addbank-layer .ui-input .cell-btn-orange {
+  background: #69f;
+}
+.ucs-addbank-layer .ui-input .cell-btn-gray {
+  background: #c0bfbf;
+}
+.ucs-addbank-greybackground {
+  background: #000;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  z-index: 100;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+
+.ucs-delbank-layer .sck{
+  padding: 15px;
+}
+.ucs-delbank-layer .sck p {
+  text-align: center;
+  padding: 40px 0px;
+}
+.ucs-delbank-layer .sck span {
+  display: block;
+  font-size: 14px;
+  color: #f25050;
+  padding: 2px 30px 2px 90px;
+  text-align: left;
+}
+.ucs-delbank-layer .sck p span.span-1 {
+  font-size: 24px;
+  color: #666;
+  padding: 0px 30px 30px 30px;
+  overflow: hidden;
+  line-height: 60px;
+}
+.ucs-delbank-layer .sck p span.span-2 {
+  padding: 0 0 30px 0;
+  text-align: center;
+}
+.ucs-delbank-layer .sck p a {
+  padding: 5px 30px;
+  background: #69f;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 200%;
+}
+.ucs-delbank-layer .sck p a.a-1 {
+  padding: 5px 30px;
+  background: #999;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 200%;
+  margin-left: 10px;
+}
+.ucs-delbank-layer .sck .icon-note{
+  font-size: 60px;
+  color: #f90;
+  float: left;
+  margin-left: 80px;
+  margin-right: 10px;
+}

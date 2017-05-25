@@ -1,0 +1,7 @@
+@charset "utf-8";
+@import "_config";
+.ucs-select{
+  background-color: nth($global-input, 1); border: 1px solid nth($global-input, 2); height: nth($global-input, 6); line-height: 100%; line-height: (nth($global-input, 6)) \9
+; width: nth($global-input, 5); overflow: hidden; color: nth($global-input, 3); font-size: nth($global-input, 4);
+  &:focus{ outline: none; }
+}

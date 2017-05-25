@@ -1,0 +1,394 @@
+@charset "utf-8";
+$primary-color: #00558B;
+/* Slider */
+.ucs-slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+.ucs-slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.ucs-slick-list:focus {
+  outline: none;
+}
+.ucs-slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+.ucs-slick-slider .ucs-slick-track, .ucs-slick-slider .ucs-slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.ucs-slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+}
+.ucs-slick-track:before, .ucs-slick-track:after {
+  content: "";
+  display: table;
+}
+.ucs-slick-track:after {
+  clear: both;
+}
+.ucs-slick-loading .ucs-slick-track {
+  visibility: hidden;
+}
+.ucs-slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+[dir="rtl"] .ucs-slick-slide {
+  float: right;
+}
+.ucs-slick-slide img {
+  display: block;
+}
+.ucs-slick-slide.ucs-slick-loading img {
+  display: none;
+}
+.ucs-slick-slide.dragging img {
+  pointer-events: none;
+}
+.ucs-slick-initialized .ucs-slick-slide {
+  display: block;
+}
+.ucs-slick-loading .ucs-slick-slide {
+  visibility: hidden;
+}
+.ucs-slick-vertical .ucs-slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+.ucs-slick-arrow.ucs-slick-hidden {
+  display: none;
+}
+
+/* Slider */
+.ucs-slick-loading .ucs-slick-list {
+  background: #fff url("../examples/images/ajax-loader.gif") center center no-repeat;
+}
+/* Icons */
+/*@font-face {
+  font-family: "slick";
+  src: url("../font/slick.eot");
+  src: url("../font/slick.eot?#iefix") format("embedded-opentype"), url("../font/slick.woff") format("woff"), url("../font/slick.ttf") format("truetype"), url("../font/slick.svg#slick") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}*/
+
+/* Arrows */
+/*.ucs-slick-prev, .ucs-slick-next {
+  position: absolute;
+  z-index:10;
+  display: block;
+  height: 20px;
+  width: 20px;
+  line-height: 0px;
+  font-size: 0px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  padding: 0;
+  border: none;
+  outline: none;
+}
+.ucs-slick-prev:hover, .ucs-slick-prev:focus,
+.ucs-slick-next:hover,
+.ucs-slick-next:focus {
+  outline: none;
+  background: transparent;
+  color: transparent;
+}
+.ucs-slick-prev:hover:before, .ucs-slick-prev:focus:before,
+.ucs-slick-next:hover:before,
+.ucs-slick-next:focus:before {
+  opacity: 1;
+}
+.ucs-slick-prev.ucs-slick-disabled:before,
+.ucs-slick-next.ucs-slick-disabled:before {
+  opacity: 0.25;
+}
+.ucs-slick-prev {
+  left: -25px;
+}
+[dir="rtl"] .ucs-slick-prev {
+  left: auto;
+  right: -25px;
+}
+.ucs-slick-prev:before {
+  content: "←";
+}
+[dir="rtl"] .ucs-slick-prev:before {
+  content: "→";
+}
+.ucs-slick-next {
+  right: -25px;
+}
+[dir="rtl"] .ucs-slick-next {
+  left: -25px;
+  right: auto;
+}
+.ucs-slick-next:before {
+  content: "→";
+}
+[dir="rtl"] .ucs-slick-next:before {
+  content: "←";
+}
+
+.ucs-slick-prev:before, .ucs-slick-next:before {
+  font-family: "slick";
+  font-size: 20px;
+  line-height: 1;
+  color: #00558B;
+  opacity: 0.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}*/
+
+.ucs-slick-prev, .ucs-slick-next {
+  position: absolute;
+  z-index:10;
+  display: block;
+  height: 20px;
+  width: 20px;
+  line-height: 0px;
+  font-size: 0px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  padding: 0;
+  border: none;
+  outline: none;
+}
+.ucs-slick-prev:hover, .ucs-slick-prev:focus,
+.ucs-slick-next:hover,
+.ucs-slick-next:focus {
+  outline: none;
+  background: transparent;
+  color: transparent;
+}
+.ucs-slick-prev:hover:before, .ucs-slick-prev:focus:before,
+.ucs-slick-next:hover:before,
+.ucs-slick-next:focus:before {
+  opacity: 1;
+}
+.ucs-slick-prev.ucs-slick-disabled:before,
+.ucs-slick-next.ucs-slick-disabled:before {
+  opacity: 0.25;
+}
+.ucs-slick-prev {
+  left: -25px;
+}
+[dir="rtl"] .ucs-slick-prev {
+  left: auto;
+  right: -25px;
+}
+.ucs-slick-prev:before {
+  content: "←";
+}
+[dir="rtl"] .ucs-slick-prev:before {
+  content: "→";
+}
+.ucs-slick-next {
+  right: -25px;
+}
+[dir="rtl"] .ucs-slick-next {
+  left: -25px;
+  right: auto;
+}
+.ucs-slick-next:before {
+  content: "→";
+}
+[dir="rtl"] .ucs-slick-next:before {
+  content: "←";
+}
+
+.ucs-slick-prev:before, .ucs-slick-next:before {
+  font-family: "slick";
+  font-size: 20px;
+  line-height: 1;
+  color: #00558B;
+  opacity: 0.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dots */
+.ucs-slick-dotted.ucs-slick-slider {
+  margin-bottom: 30px;
+}
+.ucs-slick-dots {
+  position: absolute;
+  bottom: -25px;
+  list-style: none;
+  display: block;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.ucs-slick-dots li {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+}
+.ucs-slick-dots li button {
+  border: 0;
+  background: transparent;
+  display: block;
+  height: 20px;
+  width: 20px;
+  outline: none;
+  line-height: 0px;
+  font-size: 0px;
+  color: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+.ucs-slick-dots li button:hover, .ucs-slick-dots li button:focus {
+  outline: none;
+}
+.ucs-slick-dots li button:hover:before, .ucs-slick-dots li button:focus:before {
+  opacity: 1;
+}
+.ucs-slick-dots li button:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "•";
+  width: 20px;
+  height: 20px;
+  font-family: "slick";
+  font-size: 6px;
+  line-height: 20px;
+  text-align: center;
+  color: black;
+  opacity: 0.25;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.ucs-slick-dots li.ucs-slick-active button:before {
+  color: black;
+  opacity: 0.75;
+}
+
+.ucs-slick-slider h3 {
+  background: $primary-color;
+  color: #fff;
+  font-size: 36px;
+  line-height: 100px;
+  margin: 10px;
+  padding: 2%;
+  position: relative;
+  text-align: center;
+}
+.variable-width .ucs-slick-slide p {
+  background: $primary-color;
+  height: 100px;
+  color: #fff;
+  margin: 5px;
+  line-height: 100px;
+  text-align: center;
+}
+.center .ucs-slick-center h3 {
+  color: #e67e22;
+  opacity: 1;
+  transform: scale(1.08);
+}
+.center h3{
+  opacity: 0.8;
+  transition: all 300ms ease;
+}
+.ucs-slick-slide .image {
+  padding: 10px;
+}
+.ucs-slick-slide img {
+  border: 5px solid #FFF;
+  display: block;
+  margin: auto;
+}
+.ucs-slick-slide img.ucs-slick-loading {
+  border: 0
+}
+.ucs-slick-slider {
+  margin: 30px auto 50px;
+}
+
+.ucs-slick-dots {
+  margin-left: 0;
+}
+.ucs-slick-thumb {
+  bottom: -45px;
+  li {
+    width: 60px;
+    height: 45px;
+    img {
+      filter: grayscale(100%);
+    }
+    &.ucs-slick-active {
+      img {
+        filter: grayscale(0%);
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .ucs-slick-slider h3 {
+    font-size:24px;
+  }
+  .center {
+    margin-left: -40px;
+    margin-right: -40px;
+  }
+  .center .ucs-slick-center h3 {
+    color: #e67e22;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .center h3 {
+    opacity: 0.8;
+    transform: scale(0.95);
+    transition: all 300ms ease;
+  }
+}
+// just like in the regular library, we cannot simply have a vertical
+// slider fill available space like in the horizontal case
+//
+// we have to therefore set the height of a slide in a vertical slider
+// explicitly in CSS or otherwise
+.ucs-slick-vertical .ucs-slick-slide {
+  height: 180px;
+}

@@ -1,0 +1,15 @@
+@charset "utf-8";
+@import "_config";
+.ucs-backtop{
+  background: #4A8CDB;
+  border-radius: 2px;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  position: fixed;
+  right: 10px;
+  bottom: 50px;
+}

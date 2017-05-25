@@ -1,0 +1,37 @@
+@charset "utf-8";
+@import "_config";
+.ucs-btn{
+  color: #fff; border-radius: 4px; @include height(40px); font-size: 16px; width: 100px; border: 0; text-align: center; cursor: pointer; font-family: $global-font-family; vertical-align: middle; overflow: hidden; display: inline-block;
+  &:visited{ color: #fff; }
+  //访问后的颜色
+}
+//对于a链接添加超链接样式
+.ucs-btn-bidnow{ background: #006fbc; /*立即投资*/
+  &:visited{ color: #fff; }
+  &:hover{ background: #0e87db; color: #fff; }
+}
+.ucs-btn-completed{ background: #d1d7e9; color: #666; /*完成*/
+  &:hover{ background: #c3ccea; color: #666; }
+}
+.ucs-btn-full{ background: #666; /*满标*/
+  &:hover{ background: #333; color: #fff; }
+}
+.ucs-btn-wait{ background: #e89a1e; /*预热*/
+  &:hover{ background: #f9ad35; color: #fff }
+}
+.ucs-btn-confirm{ background: #60c88e; /*确认*/
+  &:hover{ background: #59d18e; color: #fff; }
+}
+.ucs-btn-cancel{ background: #999; /*取消*/
+  &:hover{ background: #999; color: #fff; }
+}
+/*特殊处理验证码*/
+.ucs-btn-code{ width: 110px; background: #006fbc; float: left; border-radius: 0 4px 4px 0; /*验证码*/
+  &:hover{ background: #0e87db; color: #fff; }
+}
+.ucs-btn-disabled{ background: #999; cursor: not-allowed; /*禁用样式*/
+  &:hover{ color: #fff; background: #999; }
+}
+.ucs-btn-block{ width: 100%; display: block; padding-left: 0; padding-right: 0; }
+.ucs-btn-large{ @include height(50px); width: 180px; font-size: 18px; }
+.ucs-btn-small{ @include height(30px); width: 70px; font-size: 14px; }

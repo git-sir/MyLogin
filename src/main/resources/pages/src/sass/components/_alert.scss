@@ -1,0 +1,20 @@
+@charset "utf-8";
+@import "_config";
+.ucs-alert{
+  border-radius: 4px;
+  line-height: 16px;
+  padding: 8px;
+  position: relative;
+  border: 1px solid #ffeecc;
+  background-color: #fff7e6;
+  .ucs-alert-icon{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    //图标字体暂时用颜色块代替
+    background-color: #f60;
+    width: 12px;
+    height: 12px;
+  }
+  .ucs-alert-message{}
+}

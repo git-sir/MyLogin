@@ -1,0 +1,32 @@
+@charset "utf-8";
+@import "_config";
+$color: #108ee9;
+.ucs-checkbox{ cursor: pointer; display: inline-block; font-size: 12px; margin-right: 8px; position: relative; vertical-align: middle; white-space: nowrap;
+  span{ display: inline-block; vertical-align: middle }
+  &:hover{
+    .ucs-checkbox-inner{ border: 1px solid $color; }
+  }
+  .ucs-checkbox-input{ left: 1px; top: 1px; position: absolute; opacity: 0; cursor: pointer; z-index: 1; /*filter: alpha(opacity=0);*/
+    &:checked{
+      + .ucs-checkbox-inner{
+        background-color: $color; border: 1px solid $color;
+        &:after{ display: block; }
+      }
+    }
+    &:disabled{
+      cursor: not-allowed;
+      + .ucs-checkbox-inner{
+        background-color: #f5f5f5;
+      }
+      &:checked{
+        + .ucs-checkbox-inner{
+          background-color: #f5f5f5; border: 1px solid #f5f5f5; color: #666;
+        }
+      }
+    }
+  }
+  .ucs-checkbox-inner{ background-color: #fff; border: 1px solid #d9d9d9; display: inline-block; width: 12px; height: 12px; overflow: hidden; border-radius: 1px; line-height: 22px; color: #fff;
+    &:after{ content: "✔"; font-size: 12px; left: 1px; position: absolute; top: -3px; width: 5px; display: none;
+    }
+  }
+}

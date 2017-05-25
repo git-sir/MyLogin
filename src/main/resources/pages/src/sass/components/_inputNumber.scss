@@ -1,0 +1,19 @@
+@charset "utf-8";
+@import "_config";
+.ucs-input-number{ position: relative; display: inline-block;
+  a{ display: block; width: 38px; @include height(40px); background: #ccc; position: absolute; top: 0; cursor: pointer; text-align: center; font-weight: 700; z-index: 1; color: #fff;
+    &.disabled{ background: #999; cursor: not-allowed; }
+    &:hover{ background-color: #666 }
+  }
+  .add{ left: 0;
+    &:after{
+      display: block; content: '+'; color: #fff;
+    }
+  }
+  .less{ right: 0; font-size: 20px;
+    &:after{
+      display: block; content: '-'; color: #fff;
+    }
+  }
+  input{ text-align: center; }
+}

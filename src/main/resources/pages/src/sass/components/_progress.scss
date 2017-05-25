@@ -1,0 +1,32 @@
+@charset "utf-8";
+@import "_config";
+.ucs-progress{
+  position: relative;
+  padding: 5px 0;
+  padding-right: 30px;
+  .ucs-progress-inner{
+    height: nth($global-progress, 3);
+    background-color: nth($global-progress, 1);
+    border-radius: nth($global-progress, 4);
+    position: relative;
+    .ucs-progress-bg{
+      background-color: nth($global-progress, 2);
+      height: nth($global-progress, 3);
+      border-radius: nth($global-progress, 4);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      transition: all 1.5s;
+      -webkit-transition: all 1.5s;
+    }
+  }
+  .ucs-progress-text{
+    right: 0; top: 0; position: absolute; display: block;
+  }
+  //进度文字在上面
+  &.top{
+    padding-right: 0; padding-top: 20px;
+    .ucs-progress-text{ right: auto; margin-left: -10px; }
+  }
+}

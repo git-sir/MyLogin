@@ -1,0 +1,9 @@
+@charset "utf-8";
+@import "_config";
+.ucs-breadcrumb{
+  @include height(nth($global-breadcrumbs, 1));
+  a{ margin: 0 nth($global-breadcrumbs, 2);
+    &:first-child{ margin-left: 0; }
+  }
+  span{ margin: 0 nth($global-breadcrumbs, 2); color: nth($global-breadcrumbs, 3); }
+}

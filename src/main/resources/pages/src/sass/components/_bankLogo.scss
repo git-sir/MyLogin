@@ -1,0 +1,83 @@
+@charset "utf-8";
+@import "_config";
+/*银行logo图标*/
+.bank-logo{height: 38px; line-height: 38px; width: 140px; display: inline-block; overflow: hidden; background: url(../examples/images/bank.png);
+  @at-root{
+    .bank-cmb{ background-position: 0 0; /*招商银行*/
+    }
+    .bank-icbc{ background-position: 0 -880px; /*工商银行*/
+    }
+    .bank-ccb{ background-position: 0 -40px; /*建设银行*/
+    }
+    .bank-abc{ background-position: 0 -80px; /*农业银行*/
+    }
+    .bank-boc{ background-position: 0 -120px; /*中国银行*/
+    }
+    .bank-comm{ background-position: 0 -160px; /*交通银行*/
+    }
+    .bank-pingan{ background-position: 0 -200px; /*平安银行*/
+    }
+    .bank-psbc{ background-position: 0 -240px; /*邮政银行*/
+    }
+    .bank-shbc{ background-position: 0 -280px; /*上海银行*/
+    }
+    .bank-wzbc{ background-position: 0 -320px; /*温州银行*/
+    }
+    .bank-spdb{ background-position: 0 -360px; /*浦发银行*/
+    }
+    .bank-ecitic{ background-position: 0 -400px; /*中信银行*/
+    }
+    .bank-cgbchina{ background-position: 0 -440px; /*广发银行*/
+    }
+    .bank-cmbc{ background-position: 0 -520px; /*民生银行*/
+    }
+    .bank-cib{ background-position: 0 -560px; /*兴业银行*/
+    }
+    .bank-cebbank{ background-position: 0 -600px; /*光大银行*/
+    }
+    .bank-srcb{ background-position: 0 -640px; /*上海农商银行*/
+    }
+    .bank-bankofbeijing{ background-position: 0 -680px; /*北京银行*/
+    }
+    .bank-bjrcb{ background-position: 0 -720px; /*北京农商银行*/
+    }
+    .bank-szfz{ background-position: 0 -760px; /*深圳发展银行*/
+    }
+    .bank-nbcb{ background-position: 0 -800px; /*宁波银行*/
+    }
+    .bank-hzbank{ background-position: 0 -840px; /*杭州银行*/
+    }
+    .bank-dongguanbank{ background-position: 0 -1200px; /*东莞银行*/
+    }
+    .bank-hsbc{ background-position: 0 -960px; /*汇丰银行*/
+    }
+    .bank-hkbea{ background-position: 0 -1040px; /*东亚银行*/
+    }
+    .bank-961111{ background-position: 0 -1160px; /*广州农商银行*/
+    }
+    .bank-hxb{ background-position: 0 -480px; /*华夏银行*/
+    }
+    .bank-crbank{ background-position: 0 -920px; /*华润银行*/
+    }
+    .bank-lanzhou{ background-position: 0 -1320px; /*兰州银行*/
+    }
+    .bank-hebbank{ background-position: 0 -1120px; /*河北银行*/
+    }
+    .bank-hsbank{ background-position: 0 -1360px; /*微商银行*/
+    }
+    .bank-qdccb{ background-position: 0 -1280px; /*青岛银行*/
+    }
+    .bank-ydnsh{ background-position: 0 -1240px; /*尧都农商*/
+    }
+    .bank-zheshang{ background-position: 0 -1400px; /*浙商银行*/
+    }
+    .bank-nccbank{ background-position: 0 -1444px; /*南昌银行*/
+    }
+    .bank-cbhb{ background-position: 0 -1078px; /*渤海银行*/
+    }
+    .bank-egbank{ background-position: 0 -998px; /*恒丰银行*/
+    }
+    .bank-yhrcbank{ background-position: 0 -1490px; /*颍淮农村商业*/
+    }
+  }
+}
