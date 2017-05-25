@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>帐号绑定页面</title>
+    <base th:href='${#httpServletRequest.scheme.concat("://").concat(#httpServletRequest.serverName).concat(":").concat(#httpServletRequest.serverPort).concat(#httpServletRequest.contextPath).concat("/")}'/>
+    <meta http-equiv="Content-Type"content="text/html;charset=utf-8"/>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+    <meta name="Keywords" content="keyword1,keyword2,keyword3" />
+    <meta name="Description" content="网页信息的描述" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/ucs.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+
+    <script th:inline="javascript" type="text/javascript">
+        var ctx = [[${#httpServletRequest.scheme.concat("://").concat(#httpServletRequest.serverName).concat(":").concat(#httpServletRequest.serverPort).concat(#httpServletRequest.contextPath).concat("/")}]]
+    </script>
+
+</head>
+<body>
+
+<div id="main"></div>-
+
+<script type="text/javascript" th:src="@{/libs/es5-shim.min.js}" ></script>
+<script type="text/javascript" th:src="@{/libs/es5-sham.min.js}" ></script>
+<script type="text/javascript" th:src="@{/libs/react.min.js}" ></script>
+<script type="text/javascript" th:src="@{/libs/react-dom.min.js}" ></script>
+<script type="text/javascript" th:src="@{/libs/u_event_hub.js}"></script>
+<script type="text/javascript" th:src="@{/libs/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/libs/ucsmy-ui.js}"></script>
+<script type="text/javascript" th:src="@{/libs/public.js}"></script>
+<script type="text/javascript" th:src="@{/pages/bind/index.js}"></script>
+<script type="text/javascript" th:src="@{/libs/encryption.js}"></script>
+
+</body>
+</html>
