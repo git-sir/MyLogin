@@ -25,33 +25,22 @@ public class ShiroController {
     public String login (HttpServletRequest httpRequest, Model model) {
         logger.info(getClass().getSimpleName()+"拦截到"+httpRequest.getRequestURI());
         /**
-         * 这里拼接处服务器的地址，然后放入以"ctx"为key将其放入Model中，
-         * 前端HTML页面就可以通过${ctx}获取该值
-         * 此处仅用于演示用，本项目暂无该需求
+         * 这里拼接出服务器的地址，然后以"ctx"为key将其放入Model中，前端HTML页面就可以通过${ctx}获取该值。
+         * 前端HTML获取服务器地址,是为了在其js代码中通过window.location.href = ctx + "index"的方式
+         * 请求主页
          */
-        /*String ctx = httpRequest.getScheme()+"://"+httpRequest.getServerName() //服务器地址
+        String ctx = httpRequest.getScheme()+"://"+httpRequest.getServerName() //服务器地址
                 + ":"
                 + httpRequest.getServerPort()           //端口号
                 + httpRequest.getContextPath()     //项目名称
                 + "/";
-        model.addAttribute("ctx", "longintest");
-        logger.info("服务器地址-> ctx = "+ctx);*/
+        model.addAttribute("ctx", ctx);
+        logger.info("服务器地址-> ctx = "+ctx);
 
         if(SecurityUtils.getSubject().isAuthenticated()){
             return "redirect:index";
         }
         return LOGIN_PAGE;
-    }
-
-    @RequestMapping(value = "shiroLogin")
-    public String login(@RequestParam("username") String username,
-                        @RequestParam("password") String password){
-        logger.info(getClass().getSimpleName()+"拦截到/girl/shiroLogin");
-        if(ShiroUtil.login(username,password)){
-            logger.info(username+"登陆成功");
-            return "redirect:index";
-        }
-        return "loginPage";
     }
 
     @RequestMapping("logout")
@@ -62,7 +51,7 @@ public class ShiroController {
     //这个URL用于：在用户已登录的情况下，再次访问登录页面时重定向到成功页面
     @RequestMapping("index")
     public String index(){
-        return "successPage";
+        return "home/index";
     }
 
     private void generatePwd(){
@@ -85,5 +74,10 @@ public class ShiroController {
 		 * 注：这里的"managerPage"页面没有指定访问权限的话,则用户登录后便可以直接打开
 		 */
         return "managerPage";
+    }
+
+    @RequestMapping("testFunc")
+    public String testFunc(String para1,String para2){
+        return "home/index";
     }
 }

@@ -14,12 +14,14 @@
         <link rel="stylesheet" type="text/css" th:href="@{/css/ucs.css}" />
         <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
         <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}"/>
-        <!--
+
         <script th:inline="javascript" type="text/javascript">
+            //后端login对应的controller方法在返回这个HTML页面时,会在Model中存入ctx参数,以便该HTML页面可通过js代码获取ctx
+            //在该HTML文件通过js代码定义ctx变量,是为了此HTML引用的/pages/login/index.js文件中能够使用此ctx变量
             console.log("ctx:" + [[${ctx}]]);
             var ctx = [[${ctx}]];
         </script>
-        -->
+
     </head>
     <body>
         <div id="main"></div>

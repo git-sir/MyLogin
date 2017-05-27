@@ -2,7 +2,13 @@ var MessageBox = require('../widget/other/messageBox');
 var Input=UcsmyUI.Input;
 var Button=UcsmyUI.Button;
 
-var baeVerificationUrl = "login.login.pgflow/captcha?random=";
+function outputObj(obj) {
+	var description = "";
+	for (var i in obj) {
+		description += i + " = " + obj[i] + "\n";
+	}
+	console.log("打印对象的所有属性值："+description);
+}
 var _login = {
 	disabled: false,
 	text: '登录'
@@ -12,7 +18,7 @@ var Root=React.createClass({
 	getInitialState: function(){
 		return {
 			login: _login,
-			verificationUrl: baeVerificationUrl + Math.random()
+			//verificationUrl: baeVerificationUrl + Math.random()
 		}
 	},
 	componentDidMount: function(){
@@ -33,65 +39,37 @@ var Root=React.createClass({
 			return;
 		}
 
-		
-		$.ajax({
-			url:'getRsa',
-			type:'GET',
-			success:function(data)
-			{
-				var rsaKey = new RSAKey();
-				rsaKey.setPublic(b64tohex(data.data.modulus), b64tohex(data.data.exponent));
-				var enPassword = hex2b64(rsaKey.encrypt(password));
-				var loginType = data.data.loginType;
-
-				if(loginType!=null&&loginType=="local"){
-					var ndata = {username: userName, password: enPassword,"token_type":"LOCAL"};
-					me.setState({
-						login: {
-							disabled: true,
-							text: '登录中...'
-						}
-					});
-
-
-					$.post("login", ndata, function(data) {
-						me.setState({
-							login: _login
-						});
-						if(data.success == true) {
-							window.location.href = ctx + "index";
-						} else {
-							me.refs.messageBox.alert("失败", data.msg);
-						}
-					}, "json").error(function(xhr) {
-						me.setState({
-							login: _login
-						});
-						if(xhr.status == 444) {
-							me.refs.messageBox.confirm("登录异常", "登录页面信息失效，是否刷新页面？", function() {
-								window.location.reload();
-							});
-						} else {
-							me.refs.messageBox.alert("异常", "网络异常");
-						}
-					});
-				}else {
-					var oauth2Url = data.data.oauth2Url;
-					if(oauth2Url==null){
-						oauth2Url = "http://localhost/oauth/authorize?client_id=rdpdemo&response_type=code&redirect_uri="
-					}
-					var redirect_uri = ctx + "index";
-					window.location.href = oauth2Url+redirect_uri;
-				}
-
-
-				
-			},
-			error:function()
-			{
-				
+		var userdata = {username: userName, password: password,"token_type":"LOCAL"};
+		outputObj(userdata);
+		me.setState({
+			login: {
+				disabled: true,
+				text: '登录中...'
+			}
+		});
+		//"login"为登录URL,当用post方式提交时,后端shiro的authc过滤器就会自动触发登录操作
+		$.post("login", userdata, function(data) {
+			me.setState({
+				login: _login
+			});
+			if(data.success == true) {
+				//alert("ctx = "+ctx);
+				console.log("login/index.js --> ctx = "+ctx);
+				//使浏览器请求"http://主机名:端口名/项目名/index"对应的页面
+				window.location.href = ctx + "index";
+			} else {
+				me.refs.messageBox.alert("失败", data.msg);
+			}
+		}, "json").error(function(xhr) {
+			me.setState({
+				login: _login
+			});
+			if(xhr.status == 444) {
+				me.refs.messageBox.confirm("登录异常", "登录页面信息失效，是否刷新页面？", function() {
+					window.location.reload();
+				});
+			} else {
 				me.refs.messageBox.alert("异常", "网络异常");
-
 			}
 		});
 
@@ -108,12 +86,13 @@ var Root=React.createClass({
 			return;
 		}
 		var data = {username: userName, password: password,"token_type":"LOCAL"};
-		$.post("login", data, function(data) {
+		$.post("login", function(data) {
 			me.setState({
 				login: _login
 			});
 			if(data.success == true) {
-				window.location.href = ctx + "index";
+				console.log("ctx:" + ctx);
+				//window.location.href = ctx + "index";//登录成功,跳转进入主页
 			} else {
 				me.refs.messageBox.alert("失败", data.msg);
 			}
