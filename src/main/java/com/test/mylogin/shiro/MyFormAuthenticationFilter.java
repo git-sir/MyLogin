@@ -55,7 +55,7 @@ public class MyFormAuthenticationFilter extends FormAuthenticationFilter {
         String captcha = this.getCaptcha(request);
         String host = this.getHost(request);
 //        return new MyUsernamePasswordToken(username, password, rememberMe, host, captcha);
-        System.out.println(getClass().getSimpleName()+"-createToken方法：创建UsernamePasswordToken完毕");
+        System.out.println(getClass().getSimpleName()+"-createToken方法：完成创建UsernamePasswordToken");
         return new UsernamePasswordToken(username, password);
     }
 
