@@ -139,10 +139,28 @@ public class MyFormAuthenticationFilter extends FormAuthenticationFilter {
 //	}
 
 
+    /**
+     * 只有在客户端没有登录的情况下，才会执行onAccessDenied方法拦截客户端发送的URL
+     * 当客户端已登录时，其发送的URL就不会再执行onAccessDenied方法去拦截
+     */
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpServletRequest = (HttpServletRequest)request;
-        System.out.println(getClass().getSimpleName()+"-onAccessDenied：拦截"+httpServletRequest.getRequestURL()+",执行登录操作");
+        String commitWay = WebUtils.toHttp(request).getMethod();
+        //isLoginRequest方法在父类的onAccessDenied方法中会调用,此处仅用于判断URL后打印日志语句
+        if(this.isLoginRequest(request, response)) {
+            if("GET".equals(commitWay)){
+                System.out.println(getClass().getSimpleName()+"-onAccessDenied：拦截到的URL为"+httpServletRequest.getRequestURL()
+                        +",这是loginURL,但是其提交方式为GET,将让其继续往后传递");
+            }else if("POST".equals(commitWay)){
+                System.out.println(getClass().getSimpleName()+"-onAccessDenied：拦截到的URL为"+httpServletRequest.getRequestURL()
+                        +",这是loginURL,而且其提交方式为POST,将在此触发shiro的登录操作");
+            }
+        }else{
+            System.out.println(
+                    getClass().getSimpleName()+"-onAccessDenied：拦截到的URL为"+httpServletRequest.getRequestURL()
+                            +",这不是loginURL,将让其继续往后传递");
+        }
         return super.onAccessDenied(request, response);
     }
 

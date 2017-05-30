@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -80,4 +82,19 @@ public class ShiroController {
     public String testFunc(String para1,String para2){
         return "home/index";
     }
+
+    @RequestMapping("testRedirect")
+    public void testRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        response.setStatus(302); //重定向的响应头为302
+//        response.setHeader("Location","http://www.baidu.com"); //Location指定要跳转的URL
+
+        //sendRedirect方法是上面两条代码的结合
+        response.sendRedirect("http://www.baidu.com");
+    }
+
+    //"redirect:xxx"也是一种重定向的方式
+//    @RequestMapping("testRedirect2")
+//    public String testRedirect2(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        return "redirect:testRedirect";
+//    }
 }

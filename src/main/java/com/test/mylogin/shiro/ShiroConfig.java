@@ -89,6 +89,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.getFilters().put("authc", new MyFormAuthenticationFilter());
         //添加自定义的特殊字符过滤器
         shiroFilterFactoryBean.getFilters().put("spec", new SpecCharFilter());
+        shiroFilterFactoryBean.getFilters().put("cookieFilter", new CookieFilter());
 
         shiroFilterFactoryBean.setLoginUrl("/login");
         filterChainDefinitionMap.put("/shiro-logout", "logout");
@@ -104,7 +105,7 @@ public class ShiroConfig {
         //登录页面引用的js文件"/pages/login/index.js"不能拦截
         filterChainDefinitionMap.put("/pages/login/**", "anon");
         //除了上述URL外，其余URL都需要经过验证
-        filterChainDefinitionMap.put("/**", "spec,authc");//自定义的过滤器需要放在authc过滤器之前
+        filterChainDefinitionMap.put("/**", "cookieFilter,spec,authc");//自定义的过滤器需要放在authc过滤器之前
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
