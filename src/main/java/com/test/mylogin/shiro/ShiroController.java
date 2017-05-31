@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -97,4 +98,16 @@ public class ShiroController {
 //    public String testRedirect2(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //        return "redirect:testRedirect";
 //    }
+
+    @RequestMapping("testCookie")
+    public void testCookie(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Cookie cookie = new Cookie("lastAccessTime",System.currentTimeMillis()+"");
+        /**
+         * 若有设置有效期(单位是秒)，cookie将被浏览器写到硬盘上，到期后会自动删除
+         * 若不设置有效期，默认值是-1，则表示cookie的有效期是会话范围，即cookie仅存储在浏览器缓存中，浏览器一关闭cookie就没了。
+         */
+        cookie.setMaxAge(300);
+        //把cookie发回给客户端
+        response.addCookie(cookie);
+    }
 }
