@@ -109,36 +109,6 @@ public class MyFormAuthenticationFilter extends FormAuthenticationFilter {
          return super.isAccessAllowed(request, response, mappedValue);
     }
 
-//    @Override
-//	protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
-//    	if (isLoginRequest(request, response)) {
-//			if (isLoginSubmission(request, response)) {
-//				if (log.isTraceEnabled()) {
-//					log.trace("Login submission detected.  Attempting to execute login.");
-//				}
-//				return executeLogin(request, response);
-//			}
-//			if (log.isTraceEnabled()) {
-//				log.trace("Login page view.");
-//			}
-//
-//			return true;
-//		}
-//
-//    	HttpServletResponse resp = (HttpServletResponse) response;
-//    	HttpServletRequest req = (HttpServletRequest)request;
-//		resp.setContentType("text/html;charset=UTF-8");
-//
-//        if (csrfTokenRepository.isOauthLoginSuccess(req)){
-//
-//            resp.sendRedirect(req.getContextPath().concat(BING_URL));
-//            return false;
-//        }
-//		resp.sendRedirect(req.getContextPath().concat(getLoginUrl()));
-//		return false;
-//	}
-
-
     /**
      * 只有在客户端没有登录的情况下，才会执行onAccessDenied方法拦截客户端发送的URL
      * 当客户端已登录时，其发送的URL就不会再执行onAccessDenied方法去拦截
@@ -161,7 +131,22 @@ public class MyFormAuthenticationFilter extends FormAuthenticationFilter {
                     getClass().getSimpleName()+"-onAccessDenied：拦截到的URL为"+httpServletRequest.getRequestURL()
                             +",这不是loginURL,将让其继续往后传递");
         }
+        //调用父类的onAccessDenied实现
         return super.onAccessDenied(request, response);
+//        if (isLoginRequest(request, response)) {
+//            if (isLoginSubmission(request, response)) {
+//                System.out.println("Login submission detected.  Attempting to execute login.");
+//                return executeLogin(request, response);
+//            }
+//            System.out.println("Login page view.");
+//            return true;
+//        }
+//        HttpServletResponse resp = (HttpServletResponse) response;
+//        HttpServletRequest req = (HttpServletRequest)request;
+//        resp.setContentType("text/html;charset=UTF-8");
+//        resp.sendRedirect(req.getContextPath().concat(getLoginUrl()));//直接重定向到loginURL,不带jsessionid
+//        System.out.println("req.getContextPath()="+req.getContextPath()+",getLoginUrl()="+getLoginUrl());
+//        return false;
     }
 
     private String getFailureMsg(AuthenticationException ae) {

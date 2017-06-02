@@ -1,5 +1,6 @@
 package com.test.mylogin.shiro;
 
+import com.test.utils.JsonUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.crypto.hash.SimpleHash;
@@ -7,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -99,15 +101,35 @@ public class ShiroController {
 //        return "redirect:testRedirect";
 //    }
 
-    @RequestMapping("testCookie")
-    public void testCookie(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @RequestMapping("createCookie")
+    public void createCookie(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Cookie cookie = new Cookie("lastAccessTime",System.currentTimeMillis()+"");
         /**
          * 若有设置有效期(单位是秒)，cookie将被浏览器写到硬盘上，到期后会自动删除
          * 若不设置有效期，默认值是-1，则表示cookie的有效期是会话范围，即cookie仅存储在浏览器缓存中，浏览器一关闭cookie就没了。
          */
         cookie.setMaxAge(300);
+        cookie.setDomain("127.0.0.1");//Domain也可以不设置,默认就是客户端发送的URL主机地址
+        //指定了path，表示浏览器只有在发送"127.0.0.1:80xx/getCookie"这条URL时才会附带上该cookie
+        cookie.setPath("/getCookie"); //path必须以"/"开头
         //把cookie发回给客户端
+        response.addCookie(cookie);
+    }
+
+    @RequestMapping("getCookie")
+    //使用@CookieValue注解,当浏览器请求"getTestCookie"这条URL并且有附带lastAccessTime这个cookie,则该controller方法就会执行
+    public void getCookie(@CookieValue("lastAccessTime") String value, HttpServletResponse response) throws IOException {
+        System.out.println("执行getTestCookie方法：lastAccessTime这个cookie的value为"+value);
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write("lastAccessTime这个cookie的value为"+value);
+    }
+
+    @RequestMapping("deleteCookie")
+    public void deleteCookie(HttpServletRequest request, HttpServletResponse response){
+        Cookie cookie = new Cookie("lastAccessTime",System.currentTimeMillis()+"");
+        cookie.setMaxAge(0);    //将maxAge设置为0就是命令浏览器删除该cookie
+        cookie.setPath("/getCookie");   //由于lastAccessTime这个cookie有设置path,所以要删除它也必须指定相同的path
+        System.out.println("删除cookie："+cookie.getName());
         response.addCookie(cookie);
     }
 }

@@ -27,7 +27,13 @@ public class CookieFilter implements Filter {
             System.out.println(getClass().getSimpleName()+"-doFilter方法："+httpServletRequest.getRequestURL()+"所带的cookies大小为0");
         }else{
             for(Cookie cookie : cookies){
-                System.out.println("cookie:"+JsonUtils.formatObjectToJson(cookie));
+                /**
+                 * 浏览器传过来的cookie，只有name和value两个属性有值，像domain、path、maxAge这些属性，即使在服务端最初创建cookie时
+                 * 有指定其值，浏览器传送过来的cookie也不会包含这些值，因为这些属性值只需给客户端用，例如客户端根据domain、path控制
+                 * 当前发送请求时是否附带cookie，根据maxAge判断cookie在客户端的有效期。而服务端通常只需要用到cookie的name和value两
+                 * 个属性值就够了。如果非要让浏览器发送cookie所有属性值，可以考虑在浏览器页面中通过js代码实现。
+                 */
+                System.out.println("cookie："+JsonUtils.formatObjectToJson(cookie));
             }
         }
         filterChain.doFilter(servletRequest, servletResponse);

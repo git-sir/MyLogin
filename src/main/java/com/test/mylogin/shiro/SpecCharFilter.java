@@ -27,9 +27,10 @@ public class SpecCharFilter implements Filter {
          * 由于servletRequest.getParameterMap()中的值不允许被直接修改，所以这里重新创建Map保存参数值再对其进行修改
          */
         Map<String, String[]> parameterMap = new HashMap(servletRequest.getParameterMap());
+        System.out.println("以下打印请求中包含的所有请求参数：");
         //将请求参数中的前后空格去掉。servletRequest.getParameterMap()中所有参数的值都以String[]形式保存
         for (String key : parameterMap.keySet()) {
-            System.out.println("key = "+ key + " and value= " + Arrays.toString(parameterMap.get(key)));
+            System.out.println("key = "+ key + " and value = " + Arrays.toString(parameterMap.get(key)));
             String[] values = parameterMap.get(key);
             if(values.length > 0){
                 values[0] = values[0].trim();
