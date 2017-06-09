@@ -138,7 +138,7 @@ public class MyFormAuthenticationFilter extends FormAuthenticationFilter {
 //                System.out.println("Login submission detected.  Attempting to execute login.");
 //                return executeLogin(request, response);
 //            }
-//            System.out.println("Login page view.");
+//            System.out.println(getClass().getSimpleName()+"-onAccessDenied：Login page view.");
 //            return true;
 //        }
 //        HttpServletResponse resp = (HttpServletResponse) response;

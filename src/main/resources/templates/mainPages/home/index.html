@@ -1,1 +1,26 @@
-<h1>登录成功，显示主页</h1>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>我的登录Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+    <meta name="Keywords" content="keyword1,keyword2,keyword3" />
+    <meta name="Description" content="网页信息的描述" />
+    <!--<meta name="testThymeleaf_1" th:content="${testThymeleaf_1}"/>-->
+    <!--<meta name="testThymeleaf_2" th:content="${testThymeleaf_2}"/>-->
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body>
+登录成功，显示主页
+<br/>
+<!--testThymeleaf_1 = <span th:text="${testThymeleaf_1}"></span>-->
+<!--testThymeleaf_2 = <span th:text="${testThymeleaf_2}"></span>-->
+<div>
+    _csrf = <span th:text="${_csrf}"></span><br/>
+    _csrf.token = <span th:text="${_csrf.token}"></span><br/>
+    _csrf.headerName = <span th:text="${_csrf.headerName}"></span><br/>
+</div>
+</body>
+</html>

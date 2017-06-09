@@ -55,7 +55,9 @@ public class ShiroController {
     }
     //这个URL用于：在用户已登录的情况下，再次访问登录页面时重定向到成功页面
     @RequestMapping("index")
-    public String index(){
+    public String index(HttpServletRequest httpRequest, Model model){
+        httpRequest.setAttribute("testThymeleaf_1","a test_1 for Thymeleaf");
+        model.addAttribute("testThymeleaf_2","a test_2 for Thymeleaf");
         return "home/index";
     }
 

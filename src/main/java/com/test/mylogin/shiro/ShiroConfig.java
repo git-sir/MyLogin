@@ -1,6 +1,9 @@
 package com.test.mylogin.shiro;
 
 
+import com.test.mylogin.shiro.csrf.CsrfFilter;
+import com.test.mylogin.shiro.csrf.TokenRepository.CsrfTokenRepository;
+import com.test.mylogin.shiro.csrf.TokenRepository.HttpSessionCsrfTokenRepository;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -33,9 +36,9 @@ public class ShiroConfig {
     }
 
 //    @Bean(name = "csrfTokenRepository")
-//    public CsrfTokenRepository getHttpSessionCsrfTokenRepository() {
-//        return new HttpSessionCsrfTokenRepository();
-//    }
+    public CsrfTokenRepository getHttpSessionCsrfTokenRepository() {
+        return new HttpSessionCsrfTokenRepository();
+    }
 //
 //    @Bean(name = "csrfAuthenticationStrategy")
 //    public CsrfAuthenticationStrategy getCsrfAuthenticationStrategy() {
@@ -87,6 +90,8 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager(getDefaultWebSecurityManager());
         //添加自定义的authc过滤器
         shiroFilterFactoryBean.getFilters().put("authc", new MyFormAuthenticationFilter());
+        //自定义的CSRF过滤器
+        shiroFilterFactoryBean.getFilters().put("csrf", new CsrfFilter(getHttpSessionCsrfTokenRepository()));
         //添加自定义的特殊字符过滤器
         shiroFilterFactoryBean.getFilters().put("spec", new SpecCharFilter());
         //用于测试cookie的拦截器
@@ -108,7 +113,7 @@ public class ShiroConfig {
         //登录页面引用的js文件"/pages/login/index.js"不能拦截
         filterChainDefinitionMap.put("/pages/login/**", "anon");
         //除了上述URL外，其余URL都需要经过验证
-        filterChainDefinitionMap.put("/**", "sessionFilter,cookieFilter,spec,authc");//自定义的过滤器需要放在authc过滤器之前
+        filterChainDefinitionMap.put("/**", "sessionFilter,cookieFilter,spec,csrf,authc");//自定义的过滤器需要放在authc过滤器之前
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;

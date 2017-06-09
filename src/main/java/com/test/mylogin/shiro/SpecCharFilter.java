@@ -79,12 +79,13 @@ public class SpecCharFilter implements Filter {
         }
 
         /**
-         * 当shiro拦截到的URL是loginURL并且是用post方式提交的时，会调用此方法获取请求里的参数值
+         * 当shiro拦截到的URL是loginURL并且是用post方式提交的时，会调用此方法获取请求里的参数值.
+         * 其本质是：代码中执行了request.getParameter(name)最终就会调用到此方法
          * @param name
          * @return
          */
         public String getParameter(String name) {
-            System.out.println(getClass().getSimpleName()+"-getParameter方法：参数"+name+"传递给getParameter");
+            System.out.println(getClass().getSimpleName()+"的getParameter方法接收到参数"+name+",可能某个地方执行了代码request.getParameter(\""+name+"\")");
 //            String value = getRequest().getParameter(name);
 //            if(value != null){
 //                System.out.println("参数值："+value);
