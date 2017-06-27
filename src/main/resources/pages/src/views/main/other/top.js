@@ -16,6 +16,11 @@ var Header = React.createClass({
         this.props.onUserInfo();
     },
     render:function(){
+        var myUser = {};
+        myUser.name = "用户名称";
+        myUser.orgName = "所属机构";
+        myUser.roleName = "所属角色";
+        myUser.loginTime = "登录时间";
         return(
 			<div className="header">
 				<div className="header-logo">
@@ -32,7 +37,7 @@ var Header = React.createClass({
 						<li>机构：{myUser.orgName}</li>
 						<li>角色：{myUser.roleName}</li>
 						<li>登录日期：{myUser.loginTime}</li>
-						<li><a className="btn-loginout" href="outSys"> </a> </li>
+						<li><a className="btn-loginout" href="logout"> </a> </li>
 					</ul>
 				</div>
 			</div>

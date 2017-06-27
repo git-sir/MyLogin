@@ -1,26 +1,76 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>我的登录Demo</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
-    <meta name="Keywords" content="keyword1,keyword2,keyword3" />
-    <meta name="Description" content="网页信息的描述" />
-    <!--<meta name="testThymeleaf_1" th:content="${testThymeleaf_1}"/>-->
-    <!--<meta name="testThymeleaf_2" th:content="${testThymeleaf_2}"/>-->
-    <meta name="_csrf" th:content="${_csrf.token}"/>
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-</head>
-<body>
-登录成功，显示主页
-<br/>
-<!--testThymeleaf_1 = <span th:text="${testThymeleaf_1}"></span>-->
-<!--testThymeleaf_2 = <span th:text="${testThymeleaf_2}"></span>-->
-<div>
-    _csrf = <span th:text="${_csrf}"></span><br/>
-    _csrf.token = <span th:text="${_csrf.token}"></span><br/>
-    _csrf.headerName = <span th:text="${_csrf.headerName}"></span><br/>
-</div>
-</body>
+    <head>
+        <title>我的登录Demo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+        <meta name="Keywords" content="keyword1,keyword2,keyword3" />
+        <meta name="Description" content="网页信息的描述" />
+        <!--<meta name="testThymeleaf_1" th:content="${testThymeleaf_1}"/>-->
+        <!--<meta name="testThymeleaf_2" th:content="${testThymeleaf_2}"/>-->
+        <meta name="_csrf" th:content="${_csrf.token}"/>
+        <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+        <!-- *****以下是登录后的主页的顶部栏(即home\index.js中的Top组件)的样式***** -->
+        <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}"/>
+        <link rel="stylesheet" th:href="@{/css/ucs.css}" />
+        <link rel="stylesheet" th:href="@{/css/index.css}" />
+        <style type="text/css">
+            .content_component_sign  .panel-custom .ucs-form-group{
+                min-width: 500px;
+            }
+            .content_component_sign .panel-log .ucs-form-group{
+                height:auto;
+                vertical-align: top;
+            }
+            .content_component_sign .panel-log .ucs-form-group .ucs-textarea-control textarea{
+                resize: vertical;
+                overflow: auto;
+                width: 666px;
+                height: 222px;
+            }
+            .custom-tooltip{
+                display: inline-block;
+            }
+            .custom-tooltip div{
+                word-wrap:break-word;
+                word-break:break-all;
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                width: 200px;
+            }
+            .ucs-layer .ucs-form-group .unit{
+                font-style: normal;
+            }
+        </style>
+        <!-- *****以上是登录后的主页的顶部栏(即home\index.js中的Top组件)的样式***** -->
+
+        <script th:inline="javascript" type="text/javascript">
+            /**
+             * 定义全局对象UcsmyIndex，“window.UcsmyIndex”等同于“var UcsmyIndex”，
+             * “var UcsmyIndex”定义的变量也是保存在window对象中的，即也可以写成
+             * “var UcsmyIndex = UcsmyIndex || {}”
+             */
+            window.UcsmyIndex = window.UcsmyIndex || {};
+            //初始化定义UcsmyIndex对象的属性
+            window.UcsmyIndex.para1 = 'this is para1';
+            window.UcsmyIndex.para2 = {
+                data1: 'this is data1 of para2',
+                data2: [[${_csrf.token}]]
+            }
+            //在login\index.js中发送请求时传递了sign参数，所以此处可以接收到
+            window.UcsmyIndex.sign = [[${#httpServletRequest.getParameter('sign')}]];
+            console.log("home\\index.html - window.UcsmyIndex.sign = "+window.UcsmyIndex.sign);
+        </script>
+    </head>
+    <body>
+        <div id="main"></div>
+        <script type="text/javascript" th:src="@{/libs/es5-shim.min.js}" ></script>
+        <script type="text/javascript" th:src="@{/libs/es5-sham.min.js}" ></script>
+        <script type="text/javascript" th:src="@{/libs/react.min.js}" ></script>
+        <script type="text/javascript" th:src="@{/libs/react-dom.min.js}" ></script>
+        <script type="text/javascript" th:src="@{/libs/public.js}"></script>
+        <script type="text/javascript" th:src="@{/pages/home/index.js}"></script>
+    </body>
 </html>

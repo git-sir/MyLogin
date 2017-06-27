@@ -116,13 +116,15 @@ public class CsrfFilter implements Filter {
 
 	private static final class RequiresCsrfMatcher {
         private final HashSet<String> allowedMethods;
+		private final HashSet<String> allowedUris;
 
         private RequiresCsrfMatcher() {
             this.allowedMethods = new HashSet<>(Arrays.asList(new String[]{"GET", "HEAD", "TRACE", "OPTIONS"}));
+			this.allowedUris = new HashSet<>(Arrays.asList("/index"));
         }
 
         public boolean matches(HttpServletRequest request) {
-            return !this.allowedMethods.contains(request.getMethod());
+            return !(this.allowedMethods.contains(request.getMethod()) || this.allowedUris.contains(request.getServletPath()));
         }
     }
 }

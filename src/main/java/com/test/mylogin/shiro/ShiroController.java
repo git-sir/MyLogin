@@ -1,5 +1,7 @@
 package com.test.mylogin.shiro;
 
+import com.test.mylogin.shiro.csrf.TokenRepository.CsrfTokenRepository;
+import com.test.mylogin.shiro.csrf.TokenRepository.HttpSessionCsrfTokenRepository;
 import com.test.utils.JsonUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -26,6 +28,7 @@ import java.util.Map;
 public class ShiroController {
     private static final Logger logger = LoggerFactory.getLogger(ShiroController.class);
     private static final String LOGIN_PAGE = "login/index";
+    private CsrfTokenRepository csrfTokenRepository = new HttpSessionCsrfTokenRepository();
     @RequestMapping(value = "login")
     public String login (HttpServletRequest httpRequest, Model model) {
         logger.info(getClass().getSimpleName()+"拦截到"+httpRequest.getRequestURI());
@@ -49,9 +52,11 @@ public class ShiroController {
     }
 
     @RequestMapping("logout")
-    public String logout(){
+    public String logout(HttpServletRequest httpRequest){
+        csrfTokenRepository.removeToken(httpRequest);
+//        sysTokenManagerService.cleanTokenCache();
         ShiroUtil.logoutCurUser();
-        return "redirect:loginPage";
+        return LOGIN_PAGE;
     }
     //这个URL用于：在用户已登录的情况下，再次访问登录页面时重定向到成功页面
     @RequestMapping("index")

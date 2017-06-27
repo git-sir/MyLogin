@@ -1,3 +1,4 @@
+require('../../common/function.jsx');
 var MessageBox = require('../widget/other/messageBox');
 var Input=UcsmyUI.Input;
 var Button=UcsmyUI.Button;
@@ -56,7 +57,8 @@ var Root=React.createClass({
 				//alert("ctx = "+ctx);
 				console.log("login/index.js --> ctx = "+ctx);
 				//使浏览器请求"http://主机名:端口名/项目名/index"对应的页面
-				window.location.href = ctx + "index";
+				//window.location.href = ctx + "index";
+				UcsmyIndex.Post('index', {'sign': 'this is a sign'});
 			} else {
 				me.refs.messageBox.alert("失败", data.msg);
 			}
@@ -77,46 +79,6 @@ var Root=React.createClass({
 
 
 	},
-	testClick:function(){
-		var me = this;
-		var userName = this.refs.userName.getValue();
-		var password = this.refs.password.getValue();
-		if(!userName || userName == ""){
-			me.refs.messageBox.alert("失败", "用户名不能为空");
-			return;
-		}
-		var data = {username: userName, password: password,"token_type":"LOCAL"};
-		$.post("login", function(data) {
-			me.setState({
-				login: _login
-			});
-			if(data.success == true) {
-				console.log("ctx:" + ctx);
-				//window.location.href = ctx + "index";//登录成功,跳转进入主页
-			} else {
-				me.refs.messageBox.alert("失败", data.msg);
-			}
-		}, "json").error(function(xhr, errorText, errorType) {
-			me.setState({
-				login: _login
-			});
-			if(xhr.status == 444) {
-				me.refs.messageBox.confirm("登录异常", "登录页面信息失效，是否刷新页面？", function() {
-					window.location.reload();
-				});
-			} else {
-				me.refs.messageBox.alert("异常", "网络异常");
-			}
-		})
-
-	},
-	_otherClick:function(){
-
-		var   oauth2Url = "http://localhost/oauth/authorize?client_id=rdpdemo&response_type=code&redirect_uri="
-		var redirect_uri = ctx + "login.login.pgflow/index";
-		window.location.href = oauth2Url+redirect_uri;
-	
-},
 
     render:function(){
     	return (
