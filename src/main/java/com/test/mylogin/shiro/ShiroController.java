@@ -56,7 +56,7 @@ public class ShiroController {
         csrfTokenRepository.removeToken(httpRequest);
 //        sysTokenManagerService.cleanTokenCache();
         ShiroUtil.logoutCurUser();
-        return LOGIN_PAGE;
+        return "redirect:"+LOGIN_PAGE;
     }
     //这个URL用于：在用户已登录的情况下，再次访问登录页面时重定向到成功页面
     @RequestMapping("index")
