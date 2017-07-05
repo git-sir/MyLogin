@@ -25,6 +25,31 @@
 	</properties>
 
 	<dependencies>
+		<!--
+			很多SpringBoot的启动器(spring-boot-starter-xxx)最终都会依赖到spring-boot-starter(这是SpringBoot的核心启动器，包含了自动配置、日志和YAML)
+			配置log4j2需要去掉SpringBoot的默认的log配置，就在spring-boot-starter这个核心启动器这里做统一配置即可
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- 引入log4j2依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+		<!-- log4j2解析yml与springBoot不同，加上这个才能辨认到log4j2.yml文件 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-yaml</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

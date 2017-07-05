@@ -1,0 +1,86 @@
+#log4j2默认设置
+Configuration:
+  #status用于设置输出log4j2自身内部的日志,可以不设置,当设置成trace时,会看到各种log4j2自身内部日志的输出
+  status: ERROR
+
+  Properties: #在Properties下可以定义全局属性，在接下去的配置中可以引用此处定义的全局属性
+    Property: #一个Property就是一个全局属性，name是属性名，value是属性值。这里定义的属性接下来可以通过${logPath}来引用
+      name: logPath
+      value: "logs"
+
+  Appenders: #log4j2可以定义多种"输出渠道"，Appenders就用于定义这些"输出渠道"
+    Console: #输出日志到控制台
+      name: Console
+      target: SYSTEM_OUT #SYSTEM_OUT表示把日志输出到系统标准输出设备上，即控制台
+      PatternLayout: #日志的输出格式（"%l"将打印出日志事件发生的类的全路径以及方法名称、所在的代码行数）
+        pattern: "[%-5level] [%d{yyyy-MM-dd HH:mm:ss.SSS}] (%C.%M:%L) - %m%n"
+
+    #“滚动式”地输出日志到文件：将log信息写入一个文件后，会判断是否满足封存文件的要求，若满足，则触发封存文件的动作。
+    #“封存文件”就是将当前fileName属性指定的文件中，符合封存条件（例如特定日期）的日志内容抽离出来，存入一个新的文件（filePattern属性指定）
+    RollingFile:
+      # 定义一个日志输出策略：每天封存一个日志文件，文件以日期命名，按规定的格式，保存特定级别的日志内容
+      - name: InfoLog
+        fileName: ${logPath}/log.log  #保存未封存的日志内容到log.log
+        filePattern: ${logPath}/$${date:yyyy-MM}/log-%d{yyyy-MM-dd}.log #保存已封存的日志内容(此处文件名格式会影响以下interval属性)
+        Policies:
+          # TriggeringPolicy用于指定触发封存文件的条件，TimeBasedTriggeringPolicy表示基于时间的，还有一个SizeBasedTriggeringPolicy则是基于大小的
+          TimeBasedTriggeringPolicy:
+            #由于filePattern中配置的日志文件名的格式精确到"天",因此interval的单位也是"天"，表示按"天"封存日志文件
+            interval: 1
+            #假设现在设定每2个小时封存一个日志文件，且modulate=true，而目前的时间是15:30，那么在16:00会将日志文件封存，然后下次封存时间是18:00、20:00 ...
+            #即若modulate=true则封存时间将以0点为边界进行偏移计算。若modulate=false则上述例子中封存的时间应该是17:30、19:30 ...
+            modulate: true
+        #过滤器Filters用于定义哪些级别的日志允许被输出。
+        #日志级别从大到小：OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL
+        Filters:
+          #ThresholdFilter有三个参数：
+          #level：允许被输入的日志的级别；
+          #onMatch：默认值是NEUTRAL，当要打印的日志的级别大于或等于此处level时，就获取onMatch的值判断该日志是否允许打印
+          #onMismatch：默认值是DENY，当要打印的日志的级别小于此处level时，就获取onMismatch的值判断该日志是否允许打印
+          #以上onMatch或onMismatch有三种取值：ACCEPT(接受), DENY(拒绝) or NEUTRAL(中立).ACCEPT表示允许打印，DENY表示拒绝打印，
+          #NEUTRAL表示先不接受也不拒绝，而是交给后面的过滤器继续判断，若后面有没有过滤器了，则允许打印
+          ThresholdFilter:
+            - level: ERROR  #定义一个过滤器，指定日志级别为ERROR
+              onMatch: DENY #当要打印的日志的级别大于或等于ERROR时，获取onMatch的值，值为DENY，表示拒绝打印
+              onMismatch: NEUTRAL #当要打印的日志的级别小于ERROR时，获取onMatch的值，值为NEUTRAL，表示交给下一个过滤器继续判断
+            - level: INFO   #再定义一个过滤器，指定日志级别为INFO
+              onMatch: ACCEPT #当要打印的日志的级别大于或等于INFO时，获取onMatch的值，值为ACCEPT，表示允许打印
+              onMismatch: DENY #当要打印的日志的级别小于INFO时，获取onMatch的值，值为DENY，表示拒绝打印
+          #经过以上两个日志等级的过滤器配置，实现了只打印WARN和INFO两个级别的日志
+        PatternLayout:  #日志内容的格式
+          pattern: "[%-5level] [%d{yyyy-MM-dd HH:mm:ss.SSS}] (%C.%M:%L) - %m%n"
+      # 定义一个日志输出策略：每天创建一个日志文件，文件以日期命名，只输出error级别的日志，按规定的格式输出日志内容
+      - name: ErrorLog
+        fileName: ${logPath}/error.log  #保存未封存的日志内容到error.log
+        filePattern: ${logPath}/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}.log #保存已封存的日志内容(此处文件名格式会影响以下interval属性)
+        #由于filePattern中配置的日志文件名的格式精确到"天",因此interval的单位也是"天"，表示按"天"封存日志文件
+        Policies:
+          TimeBasedTriggeringPolicy:
+            interval: 1
+            modulate: true
+        #当要打印的日志的级别大于或等于ERROR时，就打印日志，小于ERROR级别的日志不打印
+        ThresholdFilter:
+          level: ERROR
+          onMatch: ACCEPT
+          onMismatch: DENY
+        PatternLayout:
+          pattern: "[%-5level] [%d{yyyy-MM-dd HH:mm:ss.SSS}] (%C.%M:%L) - %m%n"
+
+  # 在Loggers下定义Logger，Logger是log4j的核心对象，用于配置“使用什么Appender来输出哪些类(包)中的什么级别的日志”
+  Loggers:
+    #Root是最高层级的Logger，其他普通Logger都会继承Root。普通Logger没定义的属性会直接使用Root里定义的属性，例如若一个普通Logger没有指定
+    #level属性，那么它就会直接使用Root中定义的level属性值
+    Root:
+      level: INFO   #配置Root输出级别大于或等于INFO的日志
+      AppenderRef: #指定所要使用的Appender，以下Appender的名称引用自上面定义Appender时声明的name属性值
+        - ref: Console  #使用Console这个Appender，将级别大于或等于level的日志使用Console这个Appender来输出
+          #level: FATAL #不为Appender指定level属性，则其使用的是Root或普通Logger自身的level属性值
+        - ref: InfoLog  #使用InfoLog这个Appender
+          level: INFO   #将级别大于或等于INFO的日志使用InfoLog这个Appender来输出
+        - ref: ErrorLog #使用ErrorLog这个Appender
+          level: ERROR  #将级别大于或等于ERROR的日志使用ErrorLog这个Appender来输出
+    Logger: #普通Logger会继承上面定义的Root的所有属性
+      #Logger的name属性可以指定类路径或包路径，指定包路径表示该路径下的所有类都应用此Logger。例如以下配置表示com.test.mylogin包下的所有
+      #类都只能输出级别大于或等于DEBUG的日志内容
+      - name: com.test.mylogin
+        level: DEBUG  #配置此Logger输出级别大于或等于DEBUG的日志，由于此Logger重新定义了level属性，因此就不会使用Root中定义的level属性
