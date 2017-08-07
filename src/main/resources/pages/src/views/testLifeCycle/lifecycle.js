@@ -37,7 +37,7 @@ module.exports = React.createClass({
         //此方法返回false则不会执行componentWillUpdate、render、componentDidUpdate方法
         console.log('call LifeCycle\'s shouldComponentUpdate');
         outputObj("LifeCycle组件的更新后的props属性",newProps);
-        outputObj("LifeCycle组件的更新后的Stat属性",newState);
+        outputObj("LifeCycle组件的更新后的State属性",newState);
         var bool = newState.value != 3;
         console.log('是否允许更新组件: '+bool);
         return bool;    //return false 则不更新组件
