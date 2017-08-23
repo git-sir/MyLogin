@@ -1,0 +1,13 @@
+server:
+  port: 8081
+  session:
+      timeout: 3600
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/mainPages/
+  session:
+    store-type: redis
+    redis:
+      namespace: myLogin
+  redis:
+      host: localhost

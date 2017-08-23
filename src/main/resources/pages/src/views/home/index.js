@@ -1,4 +1,6 @@
 require('../../common/function.jsx')
+myModules=[];
+console.log("为避免报myModules未定义的错误，此处声明一个空的myModules")
 var Left = require('../main/other/left');
 var Top = require('../main/other/top');
 var LifeCycle = require('../testLifeCycle/lifecycle');
@@ -37,13 +39,13 @@ var Root = React.createClass({
 	render: function() {
 		return (
 				<div>
-					<button onClick={this._updateProps}>父组件修改子组件Props属性</button>
-					{console.log("call Root\'s render")}
-					<LifeCycle title={this.state.lifedata} />
+					{/*<button onClick={this._updateProps}>父组件修改子组件Props属性</button>*/}
+					{/*console.log("call Root\'s render")*/}
+					{/*<LifeCycle title={this.state.lifedata} />*/}
 					{/*要显示测生命周期的组件，必须注释掉以下Top组件*/}
-					{/*<Top onUserInfo={this._userInfo}/>*/}
-					{/*<Left ref="left" onClick={this._onClick}/>*/}
-					{/*console.log("left")*/}
+					<Top onUserInfo={this._userInfo}/>
+					<Left ref="left" onClick={this._onClick}/>
+					console.log("left")
 				</div>
 				);
 	}

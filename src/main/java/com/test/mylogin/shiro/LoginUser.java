@@ -1,11 +1,12 @@
 package com.test.mylogin.shiro;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by ucs_xiaokailin on 2017/5/19.
  */
-public class LoginUser {
+public class LoginUser implements Serializable{
     private String id;
     private String userName;    //用户名
     private String nickName;    //昵称

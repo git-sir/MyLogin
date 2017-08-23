@@ -83,6 +83,19 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.1.41</version>
 		</dependency>
+
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -110,15 +123,22 @@
 	</build>
 
 	<profiles>
+		<!-- 本地环境 -->
+		<profile>
+			<id>local</id>
+			<properties>
+				<profiles.active>local</profiles.active>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
 		<!-- 开发环境 -->
 		<profile>
 			<id>development</id>
 			<properties>
 				<profiles.active>development</profiles.active>
 			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 		</profile>
 		<!-- 生产环境 -->
 		<profile>
