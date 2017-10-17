@@ -6,7 +6,8 @@
 	<groupId>com.test</groupId>
 	<artifactId>mylogin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<!--<packaging>jar</packaging>-->
+	<packaging>war</packaging>
 
 	<name>mylogin</name>
 	<description>Demo project for Spring Boot</description>
@@ -53,6 +54,29 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<!--
+				加载spring-boot-starter-web的时候，排除掉以下内置Tomcat这个依赖。因为如果是打成war包，是放在外部Tomcat上运行，就不需要
+			 	这个内置Tomcat了
+			 -->
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!--
+			上面把内置Tomcat这个依赖排除掉了，会导致编译代码的时候失败(可能是springboot项目编译时必须依赖内置Tomcat的某些代码)，所以要单独
+			声明内置Tomcat这个依赖，但是通过<scope>provided</scope>控制在打包时是否要打进包文件里
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<!--
+				声明了provided表示打包时不会将该依赖一起打包进去。打成war包时，要声明provided，因为war包是放在第三方Tomcat上运行的，不需要
+				这个内置Tomcat；打成jar包时，不要声明provided，因为jar包需要这个内置Tomcat来运行。
+			-->
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -99,9 +123,11 @@
 	</dependencies>
 
 	<build>
+		<!-- 指定打包插件 -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
+				<!-- spring-boot-maven-plugin 是springboot提供的一个打包插件-->
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
